@@ -8,40 +8,23 @@ sidebar:
 
     # Profile information
     name: Jie WEN
-    tagline: Full Stack Developer
+    tagline: Ph.D, Lecturer, North University of China
     avatar: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
 
     # Sidebar links
     email: wenjie015@gmail.com
-    phone: 012 345 6789
+    phone: 0351-3921523
     website: wenjie015.github.io #do not add http://
-    linkedin: alandoe
     github: wenjie015
-    gitlab:
-    bitbucket:
-    twitter: '@webjeda'
     stack-overflow: # Number/Username, e.g. 123456/alandoe
     codewars:
     goodreads: # Number-Username, e.g. 123456-alandoe
 
-    languages:
-      - idiom: English
-        level: Native
-
-      - idiom: French
-        level: Professional
-
-      - idiom: Spanish
-        level: Professional
-
     interests:
-      - item: Climbing
+      - item: Reading
         link:
 
-      - item: Snowboarding
-        link:
-
-      - item: Cooking
+      - item: Football
         link:
 
 career-profile:
@@ -54,9 +37,9 @@ career-profile:
       Donec quam felis, ultricies nec, pellentesque eu.
       Second paragraph if required.
 education:
-    - degree: MSc in Computer Science
-      university: University of London
-      time: 2011 - 2012
+    - degree:   Ph.D. degree in Control Science and Engineering
+      university: University of Science and Technology of China
+      time: 2010 - 2015
       details: |
         Describe your study here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -65,9 +48,9 @@ education:
         pretium quis, sem.
           - Bullet point
           - Bullet point
-    - degree: BSc in Applied Mathematics
-      university: Bristol University
-      time: 2007 - 2011
+    - degree:  B.S. degree in Automation
+      university: University of Science and Technology of China
+      time: 2006 - 2010
       details: |
         Describe your study here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -77,9 +60,9 @@ education:
           - Bullet point
           - Bullet point
 experiences:
-    - role: Lead Developer
-      time: 2015 - Present
-      company: Startup Hubs, San Francisco
+    - role: Lecturer
+      time: Lecturer, Jul. 2017–present.
+      company: School of Electrical and Control Engineering, North University of China
       details: |
         Describe your role here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
@@ -92,20 +75,9 @@ experiences:
         architecto beatae vitae dicta sunt explicabo.
           - Bullet point
           - Bullet point
-    - role: Senior Software Engineer
-      time: 2014 - 2015
-      company: Google, London
-      details: |
-        Describe your role here lorem ipsum dolor sit amet, consectetuer
-        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec quam felis, ultricies nec,
-        pellentesque eu, pretium quis, sem.
-          - Bullet point
-          - Bullet point
-    - role: UI Developer
-      time: 2012 - 2014
-      company: Amazon, London
+    - role: Lecturer
+      time: Lecturer, Jun. 2015– Jun. 2017.
+      company: School of Computer Science and Control Engineering, North University of China
       details: |
         Describe your role here lorem ipsum dolor sit amet, consectetuer
         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
@@ -115,31 +87,23 @@ experiences:
           - Bullet point
           - Bullet point
 projects:
-    title: Projects
+    title: Grants
     intro: >
       You can list your side projects or open source libraries in this
       section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
     assignments:
-      - title: Velocity
-        link: "#hook"
-        tagline: "A responsive website template designed to help startups promote, market and sell their products."
+      - title: Scientific and Technological Innovation Programs of Higher Education Institutions in Shanxi
+        tagline: "Project 2019L0583, Principal investigator, 2019.07-2021.06, Amount granted CNY 20,000."
 
-      - title: DevStudio
-        link: "#"
-        tagline: "A responsive website template designed to help web developers/designers market their services."
+      - title: Natural Science Foundation of Shanxi Province
+        tagline: " Project 201801D221208, Principal investigator, 2018.12-2020.12, Amount granted CNY 30,000."
 
-      - title: Tempo
-        link: "#"
-        tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+      - title: Science Foundation of North University of China
+        tagline: " Project 2017025, Principal investigator, 2017.01-2019.12, Amount granted CNY 30,000."
 
-      - title: Atom
-        link: "#"
-        tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
-
-      - title: Delta
-        link: "#"
-        tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
+      - title: North University of China, Start-up Grant
+        tagline: " Project 20150057, Principal investigator, 2015.09-2018.06, Amount granted CNY 200,000."
 
 publications:
     title: Publications
@@ -147,11 +111,10 @@ publications:
       You can list your publications in this section. Lorem ipsum dolor sit
       amet, consectetur adipiscing elit. Vestibulum et ligula in nunc
       bibendum fringilla a eu lectus.
-    papers:
-      - title: The Art of Computer Programming
-        link: "#"
-        authors: Donald E. Knuth
-        conference: Addison-Wesley, 1968
+    Journal Papers:
+      - title:  Optimization of Boiler Soot Blowing Based on Hamilton-Jacobi-Bellman Equation
+        authors:  Jie WEN*, Yuanhao SHI, Xiaoqiong PANG, Jianfang JIA and Jianchao ZENG
+        conference: IEEE Access, 2019, 7(1): 20850-20862.
 
       - title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
         link: "#"
@@ -162,28 +125,6 @@ publications:
         link: "#"
         authors: Edgar T. Irons
         conference: "Comm. ACM 4 (1961), 51–55"
-
-skills:
-    title: Skills &amp; Proficiency
-
-    toolset:
-      - name: Python & Django
-        level: 98%
-
-      - name: Javascript & jQuery
-        level: 98%
-
-      - name: Angular
-        level: 98%
-
-      - name: HTML5 & CSS
-        level: 95%
-
-      - name: Ruby on Rails
-        level: 85%
-
-      - name: Sketch & Photoshop
-        level: 60%
 
 footer: >
     Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>
