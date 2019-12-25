@@ -37,7 +37,7 @@ career-profile:
       Donec quam felis, ultricies nec, pellentesque eu.
       Second paragraph if required.
 education:
-    - degree:   Ph.D. degree in Control Science and Engineering
+    - degree:  Ph.D. degree in Control Science and Engineering
       university: University of Science and Technology of China
       time: 2010 - 2015
     - degree:  B.S. degree in Automation
@@ -67,8 +67,9 @@ projects:
 
 publications:
     title: Publications
-    Journal Papers:
+    Papers:
       - title:  Optimization of Boiler Soot Blowing Based on Hamilton-Jacobi-Bellman Equation
+        link: "#"
         authors:  Jie WEN*, Yuanhao SHI, Xiaoqiong PANG, Jianfang JIA and Jianchao ZENG
         conference: "IEEE Access, 2019, 7(1): 20850-20862."
 
