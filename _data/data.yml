@@ -16,19 +16,16 @@ sidebar:
     phone: 0351-3921523
     website: wenjie015.github.io #do not add http://
     github: wenjie015
-    stack-overflow: # Number/Username, e.g. 123456/alandoe
-    codewars:
-    goodreads: # Number-Username, e.g. 123456-alandoe
 
     interests:
       - item: Reading
-
       - item: Football
 
 
 career-profile:
     title: Career Profile
-    summary: I received the B.S. degree in Automation and the Ph.D. degree in Control Science and Engineering from University of Science and Technology of China, Hefei, Anhui, China, in 2010 and 2015, respectively. From June 2015 to June 2017, I was a Lecturer with School of Computer Science and Control Engineering, North University of China. Since July 2017, I am a Lecturer with School of Electrical and Control Engineering,
+    summary: |
+     I received the B.S. degree in Automation and the Ph.D. degree in Control Science and Engineering from University of Science and Technology of China, Hefei, Anhui, China, in 2010 and 2015, respectively. From June 2015 to June 2017, I was a Lecturer with School of Computer Science and Control Engineering, North University of China. Since July 2017, I am a Lecturer with School of Electrical and Control Engineering,
 North University of China. My current research focuses on Quantum Systems Control, Prognostic and Health Management.
 education:
     - degree:  Ph.D. degree in Control Science and Engineering
@@ -51,17 +48,17 @@ projects:
         tagline: "Project 2019L0583, Principal investigator, 2019.07-2021.06, Amount granted CNY 20,000."
 
       - title: Natural Science Foundation of Shanxi Province
-        tagline: " Project 201801D221208, Principal investigator, 2018.12-2020.12, Amount granted CNY 30,000."
+        tagline: "Project 201801D221208, Principal investigator, 2018.12-2020.12, Amount granted CNY 30,000."
 
       - title: Science Foundation of North University of China
-        tagline: " Project 2017025, Principal investigator, 2017.01-2019.12, Amount granted CNY 30,000."
+        tagline: "Project 2017025, Principal investigator, 2017.01-2019.12, Amount granted CNY 30,000."
 
       - title: North University of China, Start-up Grant
-        tagline: " Project 20150057, Principal investigator, 2015.09-2018.06, Amount granted CNY 200,000."
+        tagline: "Project 20150057, Principal investigator, 2015.09-2018.06, Amount granted CNY 200,000."
 
 publications:
     title: Publications
-    Papers:
+    papers:
       - title:  Optimization of Boiler Soot Blowing Based on Hamilton-Jacobi-Bellman Equation
         link: "#"
         authors:  Jie WEN*, Yuanhao SHI, Xiaoqiong PANG, Jianfang JIA and Jianchao ZENG
