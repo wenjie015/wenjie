@@ -58,17 +58,17 @@ publications:
       - title: [J7] Rapid stabilization of time delay stochastic quantum systems based on continuous measurement feedback
         link: https://doi.org/10.1016/j.jfranklin.2020.05.016
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        conference: " Journal of The Franklin Institute, 2020, 357(12): 7515-7536"
+        conference: "Journal of The Franklin Institute, 2020, 357(12): 7515-7536"
         
       - title: [J6] Optimization of Boiler Soot Blowing Based on Hamilton-Jacobi-Bellman Equation
         link: https://ieeexplore.ieee.org/document/8633899
-        authors:  Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "IEEE Access, 2019, 7(1): 20850-20862"
 
       - title: [J5] Stabilizing a Class of Mixed States for Stochastic Quantum Systems via Switching Control
         link: https://doi.org/10.1016/j.jfranklin.2018.01.031
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
-        conference: " Journal of The Franklin Institute, 2018, 355(5): 2562-2582"
+        conference: "Journal of The Franklin Institute, 2018, 355(5): 2562-2582"
 
       - title: [J4] Stabilizing a Rotary Inverted Pendulum Based on Logarithmic Lyapunov Function
         link: https://www.hindawi.com/journals/jcse/2017/4091302/
