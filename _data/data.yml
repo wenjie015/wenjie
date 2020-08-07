@@ -55,7 +55,7 @@ projects:
 publications:
     title: Publications
     papers:
-      - title: (J7) Rapid stabilization of time delay stochastic quantum systems based on continuous measurement feedback
+      - title: [J7] Rapid stabilization of time delay stochastic quantum systems based on continuous measurement feedback
         link: https://doi.org/10.1016/j.jfranklin.2020.05.016
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "Journal of The Franklin Institute, 2020, 357(12): 7515-7536"
