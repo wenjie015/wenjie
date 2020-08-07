@@ -67,62 +67,62 @@ publications:
         authors:  Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "IEEE Access, 2019, 7(1): 20850-20862"
 
-      - title: J5] Stabilizing a Class of Mixed States for Stochastic Quantum Systems via Switching Control
+      - title: [J5] Stabilizing a Class of Mixed States for Stochastic Quantum Systems via Switching Control
         link: https://doi.org/10.1016/j.jfranklin.2018.01.031
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
         conference: " Journal of The Franklin Institute, 2018, 355(5): 2562-2582"
 
-      - title:[J4] Stabilizing a Rotary Inverted Pendulum Based on Logarithmic Lyapunov Function
+      - title: [J4] Stabilizing a Rotary Inverted Pendulum Based on Logarithmic Lyapunov Function
         link: https://www.hindawi.com/journals/jcse/2017/4091302/
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
         conference: "Journal of Control Science and Engineering, 2017, 2017: 4091302"
 
-      - title:[J3] Global Stabilization Control of Stochastic Quantum Systems
+      - title: [J3] Global Stabilization Control of Stochastic Quantum Systems
         link: http://link.springer.com/article/10.1007/s11432-015-0911-7
         authors: Shuang Cong*, Jie Wen, Sen Kuang and Fangfang Meng
         conference: "SCIENCE CHINA Information Sciences, 2016, 59(11): 112502"
 
-      - title:[J2] Preparation of Quantum Gates for Open Quantum Systems by Lyapunov Control Method
+      - title: [J2] Preparation of Quantum Gates for Open Quantum Systems by Lyapunov Control Method
         link: http://www.worldscientific.com/doi/abs/10.1142/S1230161216500050
         authors:  Jie Wen, Shuang Cong*
         conference: "Open Systems & Information Dynamics, 2016, 23(01): 1650005"
 
-      - title:[J1] Comparison of Time Optimal Control for Two Level Quantum Systems
+      - title: [J1] Comparison of Time Optimal Control for Two Level Quantum Systems
         link: http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=6754232&abstractAccess=no&userType=inst
         authors:  Shuang Cong*, Jie Wen and Xubo Zou
         conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103"
 
-      - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
+      - title: [C7] Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
         link: https://ieeexplore.ieee.org/document/8484204
         authors:  Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
         conference: "The 37th Chinese Control Conference, Wuhan, 2018: 7.25-8.27"
 
-      - title: Global Stabilization of Mixed-states for Stochastic Quantum Systems via Switching Control
+      - title: [C6] Global Stabilization of Mixed-states for Stochastic Quantum Systems via Switching Control
         link: http://www.sciencedirect.com/science/article/pii/S2405896317326393
         authors:  Shuang Cong*, Jie Wen, Fangfang Meng and  Kezhi Li
         conference: "The 20th World Congress of the International Federation of Automatic Control, Toulouse, 2017: 7.09-7.14"
 
-      - title:[C5] Stabilizing a Rotary Inverted Pendulum Based on Lyapunov Stability Theorem
+      - title: [C5] Stabilizing a Rotary Inverted Pendulum Based on Lyapunov Stability Theorem
         link: http://ieeexplore.ieee.org/document/7978173/
         authors:  Jie Wen*, Yuanhao Shi and Xiaonong Lu
         conference: "The 29th Chinese Control and Decision Conference, Chongqing, 2017: 5.28-5.30"
 
-      - title:[C4] Global Stabilization of an Eigenstate for Stochastic Quantum Systems
+      - title: [C4] Global Stabilization of an Eigenstate for Stochastic Quantum Systems
         link: http://ieeexplore.ieee.org/document/7505405/
         authors:  Shuang Cong*, Jie Wen, Sen Kuang and Fangfang Meng
         conference: "IEEE International Conference on Control & Automation, Kathmandu, 2016: 6.01-6.03"
 
-      - title:[C3] Lyapunov-based Control for the Operator Preparation in Markovian Open Quantum Systems
+      - title: [C3] Lyapunov-based Control for the Operator Preparation in Markovian Open Quantum Systems
         link: http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6932658
         authors:  Jie Wen, Shuang Cong*
         conference: "IEEE International Conference on Information and Automation, Hailar, 2014: 7.28-7.30"
 
-      - title:[C2] Realization of Quantum Hadamard Gate Based on Lyapunov Method
+      - title: [C2] Realization of Quantum Hadamard Gate Based on Lyapunov Method
         link: http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6359443
         authors:  Jie Wen, Shuang Cong* and Xubo Zou
         conference: "The 10th World Congress on Intelligent	Control and Automation, Beijin, 2012: 7.06-7.08"
 
-      - title:[C1] Transfer from Arbitrary Pure State to Target Mixed State for Quantum Systems
+      - title: [C1] Transfer from Arbitrary Pure State to Target Mixed State for Quantum Systems
         link: http://www.sciencedirect.com/science/article/pii/S1474667016443399
         authors:  Jie Wen, Shuang Cong*
         conference: "The 18th World Congress of the International Federation of Automatic Control, Milano, 2011: 8.28-9.02"
