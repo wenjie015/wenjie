@@ -53,7 +53,7 @@ projects:
         tagline: "Project 20150057, Principal investigator, 2015.09-2018.06, Amount granted CNY 200,000."
 
 publications:
-    title: Journal Papers
+    title: Unpublished Papers
     papers:
       - title: Exponential stabilization of two-level quantum systems via improved state feedback
         link: 
@@ -79,6 +79,8 @@ publications:
         link: 
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "Optimization, 2020, minor revisions"   
+        
+  publications:
     title: Journal Papers
       - title: Exponential stabilization of two-level quantum systems based on continuous noise-assisted feedback
         link: https://www.sciencedirect.com/science/article/pii/S2211379721001042
@@ -119,7 +121,9 @@ publications:
         link: http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=6754232&abstractAccess=no&userType=inst
         authors: Shuang Cong*, Jie Wen and Xubo Zou
         conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103"
-title: Conference Papers
+
+  publications:
+    title: Conference Papers
       - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
         link: https://ieeexplore.ieee.org/document/8484204
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
