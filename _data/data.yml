@@ -119,8 +119,10 @@ publications:
         link: http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=6754232&abstractAccess=no&userType=inst
         authors: Shuang Cong*, Jie Wen and Xubo Zou
         conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103"
-
-
+        
+publications:
+    title: Conference Papers
+    papers:
       - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
         link: https://ieeexplore.ieee.org/document/8484204
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
