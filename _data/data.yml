@@ -65,15 +65,15 @@ publications:
     #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
     #    conference: "Manuscript preparing"
         
-    #  - title: Exponential stabilization of stochastic quantum systems via combined feedback control
-    #    link: 
-    #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-    #    conference: "Manuscript written"
+      - title: Exponential stabilization of stochastic quantum systems via combined feedback control
+        link: https://doi.org/10.36227/techrxiv.14159090.v2 
+        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+        conference: "TechRxiv.14159090.v2, 2021"
         
-    #  - title: Exponential stabilization of spin-1/2 systems based on switching state feedback
-    #    link: 
-    #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-    #    conference: "Results in Physics, 2021, under review"
+      - title: Exponential stabilization of spin-1/2 systems based on switching state feedback
+        link: https://doi.org/10.36227/techrxiv.14167415.v1
+        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+        conference: "TechRxiv.14167415.v1, 2021"
         
     #  - title: Optimal soot blowing and repair plan for boiler based on HJB equation
     #    link: 
