@@ -65,12 +65,12 @@ publications:
     #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
     #    conference: "Manuscript preparing"
         
-      - title: Exponential stabilization of stochastic quantum systems via combined feedback control
+      - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback Control
         link: https://doi.org/10.36227/techrxiv.14159090.v2 
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
         conference: "TechRxiv.14159090.v2, 2021"
         
-      - title: Exponential stabilization of spin-1/2 systems based on switching state feedback
+      - title: Exponential Stabilization of Spin-1/2 Systems based on Switching State Feedback
         link: https://doi.org/10.36227/techrxiv.14167415.v1
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
         conference: "TechRxiv.14167415.v1, 2021"
@@ -80,12 +80,12 @@ publications:
     #    authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
     #    conference: "Optimization, 2020, minor revisions"   
 
-      - title: Exponential stabilization of two-level quantum systems based on continuous noise-assisted feedback
+      - title: Exponential Stabilization of Two-level Quantum Systems based on Continuous Noise-assisted Feedback
         link: https://doi.org/10.1016/j.rinp.2021.103929
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
         conference: "Results in Physics, 2021, 22: 103929"
                 
-      - title: Rapid stabilization of time delay stochastic quantum systems based on continuous measurement feedback
+      - title: Rapid Stabilization of Time Delay Stochastic Quantum Systems based on Continuous Measurement Feedback
         link: https://doi.org/10.1016/j.jfranklin.2020.05.016
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "Journal of The Franklin Institute, 2020, 357(12): 7515-7536"
