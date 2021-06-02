@@ -55,7 +55,7 @@ projects:
 publications:
     title: Publications
     papers:
-     - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
+      - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
         link: 
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "Automatica, under review, 2021"
