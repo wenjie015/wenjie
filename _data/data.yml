@@ -55,30 +55,35 @@ projects:
 publications:
     title: Publications
     papers:
-    #  - title: Exponential stabilization of two-level quantum systems via improved state feedback
-    #   link: 
-    #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-    #    conference: "Manuscript preparing"
+     - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
+        link: 
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+        conference: "Automatica, under review, 2021"
         
-    #  - title: Exponential stabilization of stochastic time-delay quantum systems based on continuous measurement feedback
-    #    link: 
-    #    authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-    #    conference: "Manuscript preparing"
+      - title: State of health prediction of lithium-ion batteries based on the discharge voltage and temperature
+        link: 
+        authors: Yanru Yang, Jie Wen*, Yuanhao Shi and Jianchao Zeng*
+        conference: "Electronics, under review, 2021"
         
-      - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback Control
-        link: https://doi.org/10.36227/techrxiv.14159090.v2 
+      - title: Exponential stabilization of eigenstates for quantum spin-1/2 systems via improved state feedback
+        link: 
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+        conference: "Journal of The Franklin Institute, under review, 2021"
+        
+      - title: Feedback Exponential Stabilization of Eigenstates for Quantum Spin-1/2 Systems
+        link:  
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "TechRxiv.14159090.v2, 2021"
+        conference: "Results in Physics, under review, 2021"
         
-      - title: Exponential Stabilization of Spin-1/2 Systems based on Switching State Feedback
-        link: https://doi.org/10.36227/techrxiv.14167415.v1
+      - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
+        link: 
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "TechRxiv.14167415.v1, 2021"
+        conference: "Results in Physics, under review, 2021"
         
-    #  - title: Optimal soot blowing and repair plan for boiler based on HJB equation
-    #    link: 
-    #    authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-    #    conference: "Optimization, 2020, minor revisions"   
+      - title: Optimal Soot Blowing and Repair Plan for Boiler based on HJB Equation
+        link: 
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+        conference: "Optimization, 2020, minor revisions/under review"   
 
       - title: Exponential Stabilization of Two-level Quantum Systems based on Continuous Noise-assisted Feedback
         link: https://doi.org/10.1016/j.rinp.2021.103929
