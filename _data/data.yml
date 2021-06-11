@@ -63,7 +63,7 @@ publications:
       - title: State of Health Prediction of Lithium-ion Batteries based on the Discharge Voltage and Temperature
         link: 
         authors: Yanru Yang, Jie Wen*, Yuanhao Shi and Jianchao Zeng*
-        conference: "Electronics, under review, 2021"
+        conference: "Electronics, major revision/under review, 2021"
         
       - title: Exponential stabilization of eigenstates for quantum spin-1/2 systems via improved state feedback
         link: 
@@ -82,8 +82,8 @@ publications:
         
       - title: Optimal Soot Blowing and Repair Plan for Boiler based on HJB Equation
         link: 
-        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        conference: "Optimization, 2020, minor revisions/under review"   
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang and Jianfang Jia
+        conference: "Optimization, 2020, minor revision/under review"   
 
       - title: Exponential Stabilization of Two-level Quantum Systems based on Continuous Noise-assisted Feedback
         link: https://doi.org/10.1016/j.rinp.2021.103929
