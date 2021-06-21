@@ -59,12 +59,7 @@ publications:
         link: 
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
         conference: "Automatica, under review, 2021"
-        
-      - title: State of Health Prediction of Lithium-ion Batteries based on the Discharge Voltage and Temperature
-        link: 
-        authors: Yanru Yang, Jie Wen*, Yuanhao Shi and Jianchao Zeng*
-        conference: "Electronics, major revision/under review, 2021"
-        
+            
       - title: Exponential stabilization of eigenstates for quantum spin-1/2 systems via improved state feedback
         link: 
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
@@ -73,7 +68,7 @@ publications:
       - title: Feedback Exponential Stabilization of Eigenstates for Quantum Spin-1/2 Systems
         link:  
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "Results in Physics, under review, 2021"
+        conference: "Chinese Physics B, under review, 2021"
         
       - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
         link: 
@@ -84,7 +79,12 @@ publications:
         link: 
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang and Jianfang Jia
         conference: "Optimization, 2020, minor revision/under review"   
-
+        
+      - title: State of Health Prediction of Lithium-ion Batteries based on the Discharge Voltage and Temperature
+        link: 
+        authors: Yanru Yang, Jie Wen*, Yuanhao Shi and Jianchao Zeng*
+        conference: "Electronics, to appear, 2021"
+        
       - title: Exponential Stabilization of Two-level Quantum Systems based on Continuous Noise-assisted Feedback
         link: https://doi.org/10.1016/j.rinp.2021.103929
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
