@@ -81,7 +81,7 @@ publications:
         conference: "Optimization, 2020, minor revision/under review"   
         
       - title: State of Health Prediction of Lithium-ion Batteries based on the Discharge Voltage and Temperature
-        link: 
+        link: https://doi.org/10.3390/electronics10121497
         authors: Yanru Yang, Jie Wen*, Yuanhao Shi and Jianchao Zeng*
         conference: "Electronics, 2021, 10(12): 1497"
         
