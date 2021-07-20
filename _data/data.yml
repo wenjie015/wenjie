@@ -76,9 +76,9 @@ publications:
         conference: "Results in Physics, under review, 2021"
         
       - title: Optimal Soot Blowing and Repair Plan for Boiler based on HJB Equation
-        link: 
+        link: https://doi.org/10.1080/02331934.2021.1954922
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang and Jianfang Jia
-        conference: "Optimization, 2021, to appear"   
+        conference: "Optimization, 2021, DOI: 10.1080/02331934.2021.1954922"   
         
       - title: State of Health Prediction of Lithium-ion Batteries based on the Discharge Voltage and Temperature
         link: https://doi.org/10.3390/electronics10121497
