@@ -55,25 +55,25 @@ projects:
 publications:
     title: Publications
     papers:
-      - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
-        link: 
-        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        conference: "Automatica, under review, 2021"
+     # - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
+       # link: 
+       # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+       # conference: "IEEE TAC, under review, 2021"
             
-      - title: Exponential stabilization of eigenstates for quantum spin-1/2 systems via improved state feedback
-        link: 
-        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        conference: "Journal of The Franklin Institute, major revision/under review, 2021"
+     # - title: Exponential stabilization of eigenstates for quantum spin-1/2 systems via improved state feedback
+       # link: 
+       # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
+       # conference: "Journal of The Franklin Institute, major revision/under review, 2021"
         
-      - title: Feedback Exponential Stabilization of Eigenstates for Quantum Spin-1/2 Systems
-        link:  
-        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "Chinese Physics B, under review, 2021"
+     # - title: Feedback Exponential Stabilization of Eigenstates for Quantum Spin-1/2 Systems
+       # link:  
+       # authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+       # conference: "Chinese Physics B, under review, 2021"
         
-      - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
-        link: 
-        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "Results in Physics, under review, 2021"
+    #  - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
+      #  link: 
+      #  authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+      #  conference: "Results in Physics, under review, 2021"
         
       - title: Optimal Soot Blowing and Repair Plan for Boiler based on HJB Equation
         link: https://doi.org/10.1080/02331934.2021.1954922
