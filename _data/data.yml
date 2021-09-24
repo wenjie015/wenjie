@@ -70,10 +70,10 @@ publications:
        # authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
        # conference: "Chinese Physics B, under review, 2021"
         
-    #  - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
-      #  link: 
-      #  authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-      #  conference: "Results in Physics, under review, 2021"
+      - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
+        link: 
+        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+        conference: "Results in Physics, accepted, 2021"
         
       - title: Optimal Soot Blowing and Repair Plan for Boiler based on HJB Equation
         link: https://doi.org/10.1080/02331934.2021.1954922
