@@ -134,39 +134,39 @@ publications:
       - title: Remaining Useful Life Prediction of Lithium-ion Batteries based on the Discharge Voltage
         link: 
         authors: Yanru Yang, Jie Wen*, Yuanhao Shi, Jianfang Jia, Mengwei Li and Jianchao Zeng
-        conference: "2021 China Automation Congress, Beijing, 2021: 10.22-10.24. (EI)"
+        conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24. (EI)"
         
       - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
         link: https://doi.org/10.23919/ChiCC.2018.8484204
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
-        conference: "The 37th Chinese Control Conference, Wuhan, 2018: 7.25-8.27 (EI)"
+        conference: "The 37th Chinese Control Conference (CCC 2018), Wuhan, 2018: 7.25-8.27 (EI)"
 
       - title: Global Stabilization of Mixed-states for Stochastic Quantum Systems via Switching Control
         link: https://doi.org/10.1016/j.ifacol.2017.08.2001
         authors: Shuang Cong*, Jie Wen, Fangfang Meng and  Kezhi Li
-        conference: "The 20th World Congress of the International Federation of Automatic Control, Toulouse, 2017: 7.09-7.14 (EI)"
+        conference: "The 20th World Congress of the International Federation of Automatic Control (IFAC World Congress 2017), Toulouse, 2017: 7.09-7.14 (EI)"
 
       - title: Stabilizing a Rotary Inverted Pendulum Based on Lyapunov Stability Theorem
         link: https://doi.org/10.1109/CCDC.2017.7978173
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
-        conference: "The 29th Chinese Control and Decision Conference, Chongqing, 2017: 5.28-5.30 (EI)"
+        conference: "The 29th Chinese Control and Decision Conference (CCDC 2017), Chongqing, 2017: 5.28-5.30 (EI)"
 
       - title: Global Stabilization of an Eigenstate for Stochastic Quantum Systems
         link: https://doi.org/10.1109/ICCA.2016.7505405
         authors: Shuang Cong*, Jie Wen, Sen Kuang and Fangfang Meng
-        conference: "IEEE International Conference on Control & Automation, Kathmandu, 2016: 6.01-6.03 (EI)"
+        conference: "IEEE International Conference on Control & Automation (ICCA 2016), Kathmandu, 2016: 6.01-6.03 (EI)"
 
       - title: Lyapunov-based Control for the Operator Preparation in Markovian Open Quantum Systems
         link: https://doi.org/10.1109/ICInfA.2014.6932658
         authors: Jie Wen, Shuang Cong*
-        conference: "IEEE International Conference on Information and Automation, Hailar, 2014: 7.28-7.30 (EI)"
+        conference: "IEEE International Conference on Information and Automation (ICIA 2014), Hailar, 2014: 7.28-7.30 (EI)"
 
       - title: Realization of Quantum Hadamard Gate Based on Lyapunov Method
         link: https://doi.org/10.1109/WCICA.2012.6359443
         authors: Jie Wen, Shuang Cong* and Xubo Zou
-        conference: "The 10th World Congress on Intelligent	Control and Automation, Beijin, 2012: 7.06-7.08 (EI)"
+        conference: "The 10th World Congress on Intelligent	Control and Automation (WCICA 2012), Beijin, 2012: 7.06-7.08 (EI)"
 
       - title: Transfer from Arbitrary Pure State to Target Mixed State for Quantum Systems
         link: https://doi.org/10.3182/20110828-6-IT-1002.00389
         authors: Jie Wen, Shuang Cong*
-        conference: "The 18th World Congress of the International Federation of Automatic Control, Milano, 2011: 8.28-9.02 (EI)"
+        conference: "The 18th World Congress of the International Federation of Automatic Control (IFAC World Congress 2011), Milano, 2011: 8.28-9.02 (EI)"
