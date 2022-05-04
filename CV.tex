@@ -1,0 +1,729 @@
+\documentclass[]{elsarticle}
+\usepackage{geometry}
+\geometry{a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\usepackage{lineno,hyperref}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[toc,page,title,titletoc,header]{appendix}
+\usepackage{graphicx,subfigure}
+\usepackage{booktabs}
+\usepackage{color}
+\modulolinenumbers[5]
+
+\usepackage{changes}
+\definechangesauthor[name=Jie WEN, color=red]{J.W}
+	
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newdefinition{rmk}{Remark}
+\newproof{pf}{Proof}
+
+\biboptions{numbers,sort&compress}
+
+\usepackage[normalem]{ulem}
+\newcommand{\li}{\uline{\hspace{0.5em}}}
+
+\biboptions{numbers,sort&compress}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\journal{Journal of The Franklin Institute}
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{frontmatter}
+
+\title{Global exponential stabilization of quantum spin-$\frac{1}{2}$ systems via improved feedback control\tnoteref{mytitlenote}}
+\tnotetext[mytitlenote]{This work was supported by the National Natural Science Foundation of China under Grant 72071183, the Natural Science Foundation of Shanxi Province under Grant 201901D111164, and the Research Project Supported by Shanxi Scholarship Council of China under Grant 2020-114.}
+
+%% Group authors per affiliation:
+\author[NUC1,NUC1plus]{Jie Wen\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding authors}
+\ead{wenjie015@gmail.com}
+
+\author[NUC1,NUC1plus]{Yuanhao Shi}
+
+\author[NUC2]{Xiaoqiong Pang}
+
+\author[NUC3]{Jianfang Jia}
+
+\author[NUC2]{Jianchao Zeng\corref{mycorrespondingauthor}}
+\ead{zengjianchao@263.net}
+
+\address[NUC1]{Department of Automation, North University of China, Taiyuan 030051, China}
+\address[NUC1plus]{Unmanned Systems Institute, North University of China, Taiyuan 030051, China}
+\address[NUC2]{School of Data Science and Technology, North University of China, Taiyuan 030051, China}
+\address[NUC3]{Department of Transportation Engineering, North University of China, Taiyuan 030051, China}
+
+
+\begin{abstract}
+In this paper, we propose two state feedback strategies to exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems based on the state feedback designed in \cite{LAMC2018} and \cite{WSJZJ2021b}, respectively. In order to obtain faster state convergence, we improve the state feedback by increasing the real-time state convergence rate, and prove the exponential convergence. On this basis, we present the way of achieving global exponential stabilization of quantum spin-$\frac{1}{2}$ systems under the improved state feedback with the help of noise-assisted feedback. Besides, we redesign the division of state space to improve the state convergence rate further, and compare the state convergence rates of all state feedback strategies that can exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems. The effectiveness and the superiority of the improved feedback control are also verified in numerical simulations.
+\end{abstract}
+
+\begin{keyword}
+exponential stabilization, quantum spin-$\frac{1}{2}$ systems, state feedback, noise-assisted feedback
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}\label{Sec:Intro}
+Quantum technology is one of the most disruptive frontier technologies in the world, and the advances in quantum control technology are expected to promote the second quantum revolution, which has an essential impact on the future society. Due to the important role of eigenstates in quantum information science, the stabilization of eigenstates has become one of the hot researches in the field of quantum systems control. For the high-accuracy and rapidity of stabilizing target eigenstate, a variety of classical control methods \cite{DDJ2001,JHBJ2009,DPJ2012A,DPJ2012B,MPJ2012,KCJ2008,KDPJ2017} have be introduced and used in quantum systems.
+
+Similar to the classic control field, closed-loop feedback is recommended to obtain better robustness in quantum systems control. However,  closed-loop feedback needs the system information through measurement operation, which can cause the collapse of quantum states. To overcome this obstacle, quantum filter theory was proposed by Belavkin \cite{BJ1983,BJ1992}, in which the evolution of quantum filter state is described by an Ito stochastic differential equation (SDE), known as quantum stochastic master equation (SME) \cite{HSMJ2005,MHJ2007,CWKMJ2016}. Based on quantum filter theory, {\color{red}{various control methods, including switching control \cite{MHJ2007,VGLC2015,CWKMJ2016,WSPJZJ2020,LLKXJ2022} and non-smooth state feedback \cite{GVHJ2012},}} had been proposed to globally stabilize eigenstates for quantum spin systems \cite{HSMJ2005}, $N$-level angular moment systems \cite{MHJ2007,TC2007,TC2008} and {\color{red}{$N$-level general}} stochastic quantum systems \cite{GVHJ2012,CWKMJ2016,LLKXJ2022}, respectively. {\color{red}{In particular, Tsumura achieved the global stabilization of $N$-dimensional quantum spin systems \cite{TC2007,TC2008} and two-qubit systems \cite{TKC2008} via continuous feedback.}}
+Considering the requirement of rapidity in quantum manipulation, the exponential convergence of quantum state is of great significance, namely, the quantum state can converge to the target state at an exponential rate. For this goal and inspired by the Tsumura's works \cite{GVHJ2012,CWKMJ2016,LLKXJ2022}, Liang \textit{et al.} designed the continuous state feedback in exponential form to exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems \cite{LAMC2018} and $N$-level quantum angular momentum systems \cite{LAMJ2019}, based on which the robustness were investigated in \cite{LAMOn2020a} and \cite{LAMOn2020b} respectively, {\color{red}{and the convergence analyses were performed by using Stratonovich equation \cite{stratonovich1966new,rogers2000diffusions} and support theorem \cite{StroockVaradhan+2020+333+360}}}. Recently, an adaptive parameter tuning algorithm was proposed by Enami \textit{et al.} in \cite{EOC2021a} to robust stabilize $N$-level quantum angular momentum systems based on the controller designed in \cite{LAMOn2020b}, and the effect of weight function on asymptotic convergence rate of the estimated parameter was analyzed in \cite{EOC2021b}. Different from {\color{red}{usual}} state feedback, Cardona \textit{et al.} proposed the noise-assisted feedback, where the saturating function was designed as the noise gain function, to achieve the exponential stabilization of eigenstates for qubit systems \cite{CardonaPHD2019} and $N$-level quantum systems \cite{CSRJ2020}, based on which we proposed two continuous noise-assisted feedback strategies for the same goal in \cite{WSJZJ2021}, where the noise gain functions are continuous functions in linear form and exponential form, respectively. 
+{\color{red}{In noise-assisted feedback, the noise gain is adapted as a function of the quantum state, so the noise-assisted feedback also belongs to state feedback in a broad sense. Moreover, following similar research paths and applying similar mathematical tools in \cite{LAMC2018,LAMJ2019}, Liang \textit{et al.} studied the exponential stabilization of Bell states \cite{LAMC2019} and Greenberger-Horne-Zeilinger (GHZ) states \cite{LAMJ2021}, and show that local stability in probability holds true. To the best of our knowledge, it is the strongest result on the exponential stability of multi-qubit systems.
+It is worth mentioning that learning algorithms had been used to stabilize stochastic quantum systems based on continuous measurement feedback, e.g., deep reinforcement learning \cite{BSKMTO2021}, differentiable programming \cite{SSKBKJ2021}, etc. However, the feedback strategies in \cite{BSKMTO2021,SSKBKJ2021} can only achieve global stabilization of stochastic quantum systems instead of global exponential stabilization.
+}}
+
+According to the continuous state feedback proposed in \cite{LAMC2018}, we designed switching state feedback to obtain faster exponential convergence of eigenstates for quantum spin-$\frac{1}{2}$ systems in \cite{WSJZJ2021b}. In this paper, we propose two state feedback strategies, which are denoted as improved state feedback, to further improve the state convergence rate and achieve the exponential stabilization of the target eigenstate for quantum spin-$\frac{1}{2}$ systems based on the state feedback in \cite{LAMC2018} and \cite{WSJZJ2021b}, respectively. The main idea of designing improved state feedback is to increase the real-time state convergence rate. Specifically, we design new switching state feedback by modifying the state feedback in \cite{LAMC2018} and \cite{WSJZJ2021b}, respectively. Based on the designed switching state feedback, we divide the state space into two subspaces and use different state feedback in the corresponding subspace to obtain a larger real-time state convergence rate. The exponential convergence and the superiority of the  improved state feedback proposed in this paper are proved and verified in numerical simulations. On this basis, we compare all state convergence rates under the state feedback that can exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems. To our knowledge, the improved state feedback proposed in this paper are the state feedback that achieves the fastest exponential stabilization of eigenstates for quantum spin-$\frac{1}{2}$ systems. Moreover, the state feedback in \cite{LAMC2018} and \cite{WSJZJ2021b} as well as the improved state feedback in this paper can only exponentially stabilize eigenstates in a state subspace, so we have the aid of noise-assisted feedback, which were proposed in \cite{WSJZJ2021}, to achieve the global exponential stabilization. Besides, we redesign the state space division to improve the state convergence rate further by comparing the real-time state convergence rate under the improved state feedback and noise-assisted feedback. 
+{\color{red}{Besides, in a quantum system, there is no hope to measure the actual state for fundamental physical reasons, which leads to the designed state-based controllers have to be combined with quantum state observers \cite{NJ06} or quantum state estimation algorithms \cite{BKGLJ2017,YFTJ2019,ZCLJ2021} for the practical applications as shown in \cite{QCJ2019}. Fortunately, due to the separation property between state estimation and control, the state observer and the state-based controller can be designed independently and separately. Thus, the work of this paper belongs to the design of controller, and }} the main contributions of this paper are as follows: (1) We propose two novel state feedback strategies to exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems; (2) The exponential convergence and superiority of improved state feedback are proved; (3) We present the way of achieving global exponential stabilization of eigenstates under improved state feedback with the help of noise-assisted feedback; (4) We design a new state space division to improve the state convergence rate further; (5) The state convergence rates under all existing state feedback strategies that can exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems are compared.
+
+The rest of this paper is organized as follows. Section \ref{Sec:SystemModel} presents the model of quantum spin-$\frac{1}{2}$ systems and the exponential stabilization of eigenstates. In Section \ref{Sec:ControlDesign}, we give the methods of improving the state feedback strategies in \cite{LAMC2018} and \cite{WSJZJ2021b}, prove the exponential convergence and compare the state convergence rates under different state feedback. The way of achieving global exponential stabilization with the help of noise-assisted feedback is presented in Section \ref{Sec:Global}. In Section \ref{Sec:Optimization_of_division}, we show the method of designing the state space division to improve state convergence rate further. Numerical simulations are performed in Section \ref{Sec:NumSim} to verify the effectiveness and the superiority of improved feedback control as well as the comparison result of state convergence rates. Finally, Section \ref{Sec:Conclusions} concludes this paper and discusses the possible future directions.
+
+\textbf{Notation}.  $\mathbb{R}$ and $\mathbb{C}$ denote the set of real numbers and complex numbers, respectively. $A^\dag $ is the conjugate transpose of the matrix $A$. $\operatorname{tr}(A)$ denotes the trace of matrix $A$. $\sigma_x=\left[\begin{array}{cc}
+	0 & 1 \\
+	1 & 0
+\end{array}\right], \sigma_y=\left[\begin{array}{cc}
+	0 & -i\\
+	i& 0
+\end{array}\right]~\rm{and}~ \sigma_z=\left[\begin{array}{cc}
+	1 & 0 \\
+	0 & -1
+\end{array}\right]
+$
+denote the Pauli matrices, where $i=\sqrt{-1}$. $[A, B]=AB-BA$ denotes the commutator of matrices A and B. $\mathbb{E}\left[X\right]$ denotes the expected value of a random variable $X$. $\succ$ represents surpass. $\mathcal{A}$ denotes the infinitesimal generator.
+
+\section{Problem Formulation}\label{Sec:SystemModel}
+The state evolution of a quantum spin-$\frac{1}{2}$ system can be described by the following {\color{red}{It\^{o}}} SDE \cite{LAMC2018}
+\begin{equation}\label{eq:model_focus}
+	\begin{aligned}
+		d \rho_{t} =\left(-i\frac{\omega_{eg}}{2}\left[\sigma_z,\rho_{t}\right]+\frac{M}{4}\left(\sigma_z\rho_{t}\sigma_z-\rho_{t}\right)-i\frac{u_t}{2}\left[\sigma_y,\rho_{t}\right]\right) d t
+		+\frac{\sqrt{\eta M}}{2} \left(\sigma_z\rho_t+\rho_t \sigma_z-2\operatorname{tr}\left(\rho_t\sigma_z\right) \rho_t\right)d W_{t}
+	\end{aligned}
+\end{equation}
+where, ${\rho _t}$ is the quantum state and evolves in the state space $\mathcal{S}=\left\{
+{{\rho} \in {\mathbb{C}^{2 \times 2}}:{\rho} = {\rho}^\dag \ge 0,{\rm{tr}}\left( {{\rho}} \right) =
+	1}
+\right\}$; $M$ is the strength of the interaction between the light and the atoms; $\omega_{eg}$ is the difference between the energies of the excited state $\rho_e=\left[\begin{array}{cc}
+	0 & 0 \\
+	0 & 1
+\end{array}\right]$ and the ground state $\rho_g=\left[\begin{array}{cc}
+	1 & 0 \\
+	0 & 0
+\end{array}\right]$; $u_t \in \mathbb{R}$ is the control input; $W_t$ is a standard Wiener process;  $\eta \in(0,1]$ is the measurement efficiency. The {\color{red}{It\^{o}}} SDE \eqref{eq:model_focus} is the SME describing quantum spin-$\frac{1}{2}$ systems and also the controlled quantum system considered in this paper. 
+
+The goal of this paper is to achieve the exponential stabilization of eigenstates for quantum spin-$\frac{1}{2}$ systems, i.e., the system state can exponentially converge to the target eigenstate from an arbitrary initial state in the state space under the control input. Unfortunately, the system state converges to an arbitrary equilibrium $\bar{\rho}$ with the probability $\operatorname{tr}\left(\rho_{0}\bar{\rho}\right)$ from the initial state $\rho_{0}$ with zero control input $u_t=0$ under continuous measurement due to the symmetric structure of state space $\mathcal{S}$ \cite{LAMC2018}. For  quantum spin-$\frac{1}{2}$ systems, there are two eigenstates, i.e., $\rho_e$ and $\rho_g$, and the system equilibriums are the all eigenstates.
+Thus, in order to make system state converge to the target eigenstate, the suitable control input need to be applied instead of zero control input. For this goal, static output feedback \cite{WWJ2001,TV2008,TV2009}, state feedback \cite{HSMJ2005,MHJ2007,CWKMJ2016,TC2007,TC2008,GVHJ2012,VGLC2015,LAMC2018,LAMOn2020a,LAMOn2020b,WSLJ2018,LAMJ2019,WSPJZJ2020,WSJZJ2021b} and noise-assisted feedback \cite{CardonaPHD2019,CSRJ2020,WSJZJ2021} have been proposed. Particularly, both continuous state feedback in \cite{LAMC2018} and switching state feedback in \cite{WSJZJ2021b} can exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems. In this paper, we develop the state feedback strategies proposed in \cite{LAMC2018} and \cite{WSJZJ2021b} respectively to improve the real-time state convergence rate. Thereby, the control problem of this paper can be described as follows. 
+
+\textbf{Exponential stabilization by improved state feedback.}
+\textit{For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus}, improve the continuous state feedback in \cite{LAMC2018} and switching state feedback in \cite{WSJZJ2021b} to exponentially render the quantum state $\rho_{t}$ to the desired target eigenstate $\rho_f$  from any initial state $\rho_{0}$ in the state space $\mathcal{S}$, and make sure that the state convergence are faster than that under continuous state feedback in \cite{LAMC2018} and switching state feedback in \cite{WSJZJ2021b}, respectively.}
+
+Compare \eqref{eq:model_focus} with the controlled system model in \cite{GVHJ2012}, the measurement operator $L=\frac{\sqrt{M}}{2}\sigma_z$, which is self-adjoint and regular, the system free Hamiltonian $H_0=\frac{\omega_{eg}}{2}\sigma_z$ and $\left[H_0, L\right]=0$, while the system control Hamiltonian $H_1=\frac{\sigma_y}{2}$ is connected, such that the solvability of global stabilization for quantum spin-$\frac{1}{2}$ systems can be guaranteed according to Lemma 1 in \cite{GVHJ2012}, which is the basis of global exponential stabilization.
+
+\section{Design of Improved State Feedback}\label{Sec:ControlDesign}
+In this section, we present the improvement of the continuous state feedback in \cite{LAMC2018} and switching state feedback in \cite{WSJZJ2021b}. The target eigenstate $\rho_f$ is set as $\rho_g$ in this section, we ignore the case in which $\rho_{e}$ is the target state due to the similarity.
+
+\subsection{Improvement of continuous state feedback}
+The infinitesimal generator $\mathcal{A}$ associated with $d\rho_{t}=\Theta(\rho_{t})dt+\Xi(\rho_{t})dW_t$ acts on the function $V\left(\rho_{t}\right)$ in the following way \cite{GVHJ2012}
+\begin{equation}\label{eq:lv_ass}
+	\mathcal{A} V(\rho_t)=\frac{\partial V(\rho_t)}{\partial \rho_t} \Theta\left(\rho_t\right)+\frac{1}{2}\operatorname{tr}\left(\Xi^T\left(\rho_t\right)\frac{\partial^{2} V\left(\rho_t\right)}{\partial \rho_t^{2}}\Xi\left(\rho_t\right)\right)
+\end{equation}
+based on which the infinitesimal generator $\mathcal{A}$ associated with quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback $u_t=u^{\mathrm{sf}}_t\left(\rho_{t}\right)$ acts on $V(\rho_{t})$ is 
+$$\mathcal{A} V\left(\rho_{t}\right)=\frac{u^{\mathrm{sf}}_t\left(\rho_{t}\right)}{4} \frac{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{V\left(\rho_{t}\right)}
+-\frac{\eta M}{2}\operatorname{tr}^2\left(\rho_{t} {\rho_f}\right) V\left(\rho_{t}\right)$$
+Due to $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{e}\right] {\rho_f}\right)=\operatorname{tr}\left(\rho_{e} {\rho_f}\right)=0$, $\mathcal{A} V\left(\rho_{e}\right)=0$ such that $\mathcal{A} V\left(\rho_{t}\right)\le-CV\left(\rho_{t}\right)$ with $C>0$ does not hold for $\forall \rho_{t}\in \mathcal{S}$, which means that  there does not exist any state feedback to make the target eigenstate $\rho_{f}$ globally exponentially stable. Thus, we consider the exponential stabilization of quantum spin-$\frac{1}{2}$ systems under state feedback in a state subspace first, which is defined as $\mathcal{D}_\lambda=\{\rho\in\mathcal{S}:\lambda<\operatorname{tr}\left(\rho{\rho_f}\right)\le1\}$ with $\lambda \in(0,1)$.
+
+For the exponential stabilization of eigenstates of quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus}, the continuous state feedback in \cite{LAMC2018} is designed as
+\begin{equation}\label{eq:sf_u1}
+	u_t^{\mathrm{csf}}\left(\rho_{t}\right)=\alpha V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)
+\end{equation}
+where, $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$, $\gamma \geq 0, \beta \geq 1$ and $0<\alpha<\frac{\eta M \lambda^{2}}{\left(1-\lambda\right)^{\frac{\beta-1}{2}}}$. {\color{red}{From Theorem 4.3 in \cite{LAMC2018}, the state feedback \eqref{eq:sf_u1} can make the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfy $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-\frac{{\eta M}}{2}\lambda^{2} t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$.}}
+In this subsection, we modify \eqref{eq:sf_u1} as
+\begin{equation}\label{eq:sf_u1_imp}
+	u_t^{\mathrm{csfm}}\left(\rho_{t}\right)=\kappa\left(\rho_{t}\right)\alpha V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)
+\end{equation}
+where, $\kappa\left(\rho_{t}\right)=\left\{ \begin{array}{l}-1, \text{if}~\rho_t\in\Phi_1\\ 1, \text{if}~ \rho_t\in\Phi_2 \end{array} \right.$ with $\Phi_1=\left\{\rho:\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)>0, \rho\in \mathcal{D}_\lambda\right\}$ and $\Phi_2=\mathcal{D}_\lambda\setminus\Phi_1$.
+
+Based on the improved continuous state feedback \eqref{eq:sf_u1_imp} and state subspace $\mathcal{D}_\lambda$, we present one of the main results of this paper as shown in Theorem \ref{thm:exponentially_stable_csfimp}.
+\begin{thm}\label{thm:exponentially_stable_csfimp}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback \eqref{eq:sf_u1_imp},  the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-r t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$ with the convergence rate $r\ge\frac{{\eta M}}{2}\lambda^{2}$, i.e., the target eigenstate $\rho_f$ is locally exponentially stable. In particular, the state convergence under  \eqref{eq:sf_u1_imp} is faster than that under the continuous state feedback \eqref{eq:sf_u1} for the state subspace $\mathcal{D}_\lambda$.
+\end{thm}
+\begin{proof}
+	From \eqref{eq:lv_ass}, the infinitesimal generator $\mathcal{A}$ associated with \eqref{eq:model_focus} and \eqref{eq:sf_u1_imp} acts on $V\left(\rho_{t}\right)$ is given by
+	\begin{equation}\label{eq:LV_sf_imp}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{csfm}}\left(\rho_{t}\right)=&\frac{\kappa\left(\rho_{t}\right)\alpha V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}{4} \frac{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{V\left(\rho_{t}\right)}-\frac{\eta M}{2}\operatorname{tr}^2\left(\rho_{t} {\rho_f}\right) V\left(\rho_{t}\right)\\
+			=&\frac{\alpha}{4}\kappa\left(\rho_{t}\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)V^{\beta-1}\left(\rho_{t}\right)
+			-\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{4V\left(\rho_{t}\right)}
+			-\frac{\eta M}{2}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right) V\left(\rho_{t}\right)\\
+			=&-\frac{1}{2}\left({\eta M}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right)+\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{2V^2\left(\rho_{t}\right)}+\frac{\alpha}{2}|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)| V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)\\
+			=&-\frac{1}{2}\left(\Lambda+\frac{\alpha}{2}|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)| V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation}
+	where, $\Lambda={\eta M}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right)+\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{2V^2\left(\rho_{t}\right)}$; the subscript "$\mathrm{csfm}$" of $\mathcal{A} V_{\mathrm{csfm}}\left(\rho_{t}\right)$ represents the infinitesimal generator $\mathcal{A}$ that acts on $V\left(\rho_{t}\right)$ is associated with the control $	u_t^{\mathrm{csfm}}\left(\rho_{t}\right)$. The subscripts below represent similar meanings, so we do not repeat the explanation. 
+	
+	The $\mathcal{A}$ associated with \eqref{eq:model_focus} and \eqref{eq:sf_u1} acts on $V(\rho_{t})$ is
+	\begin{equation}\label{eq:LV_sf_u1}
+		\begin{aligned}
+			\mathcal{A} V_{\mathrm{csf}}\left(\rho_{t}\right)=&-\frac{1}{2}\left(\Lambda-\frac{\alpha}{2}\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right) V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)\\
+		\end{aligned}
+	\end{equation}
+	Compare \eqref{eq:LV_sf_imp} and \eqref{eq:LV_sf_u1}, we have
+	\begin{equation}
+		\mathcal{A} V_{\mathrm{csfm}}\left(\rho_{t}\right)\le\mathcal{A} V_{\mathrm{csf}}\left(\rho_{t}\right)
+	\end{equation}
+	due to $|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)|\ge-\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)$, which means the state convergence rate under \eqref{eq:sf_u1_imp} is larger than that under \eqref{eq:sf_u1}, i.e., the state convergence under \eqref{eq:sf_u1_imp} is faster.
+	
+	On the other hand, as described in \cite{LAMC2018}, when $\rho_{t}\in \mathcal{D}_\lambda$, \eqref{eq:LV_sf_imp} can be written as
+	\begin{equation}\label{eq:LV_sf_imp_ieq}
+		\begin{aligned}
+			\mathcal{A} V_{\mathrm{csfm}}\left(\rho_{t}\right)\le&-\frac{1}{2}\left({\eta M}\lambda^2+\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{2V^2\left(\rho_{t}\right)}+\frac{\alpha}{2}|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)| V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)\\
+			\le&-\frac{1}{2}{\eta M}\lambda^2V\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation}
+	From Theorem 3 in \cite{CSRJ2020}, for the {\color{red}{It\^{o}}} SDE $dx_{t}=\Theta\left(x_{t}\right)dt+\Xi\left(x_{t}\right)dW_t$, if $\mathcal{V}\left(x_t\right)$ is a nonnegative, twice continuously differential function on $S$ and $\mathcal{A}\mathcal{V}\left(x_t\right)\le-\mathcal{C}\mathcal{V}\left(x_{t}\right)$ for some $\mathcal{C}>0$, $\forall t\ge t_0\ge 0$ and $\forall x_t\in S$, in which $t_0$ is the initial time, $S$ is a compact and positively invariant subset, then
+	\begin{equation}\label{eq:thmauto2020}
+		\mathbb{E}\left[\mathcal{V}\left(x_{t}\right)\right]\le \mathcal{V}\left(x_{t_0}\right)e^{-\mathcal{C}\left(t-t_0\right)}, \forall x_{t_0}, x_{t}\in S
+	\end{equation}
+	Thereby, if we take $\mathcal{C}=\frac{1}{2}{\eta M}\lambda^2$, $\mathcal{V}(\rho_{t})=V(\rho_{t})$, $t_0=0$,  and regard $\mathcal{D}_\lambda$ and $\rho_{0}$ as the invariant state subset $S$ and initial state $x_{t_0}$, respectively, one can obtain from \eqref{eq:LV_sf_imp_ieq} and \eqref{eq:thmauto2020} that
+	\begin{equation}\label{eq:LV_sf_final_1}
+		\mathbb{E}\left[V\left(\rho_{t}\right)\right]\leq V\left({\rho}_0\right) e^{-\frac{\eta M}{2}\lambda^{2}t}, \forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda
+	\end{equation}
+	which means that $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-r t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$ with the convergence rate $r$ that is not less than $\frac{\eta M}{2}\lambda^{2}$, so that the target eigenstate $\rho_f$ is locally exponentially stable. The proof is complete.
+\end{proof}
+\begin{rmk}
+	In this paper, the locally exponentially stable means that	$\mathbb{E}[V(\rho_t)]\leq V(\rho_0) e^{-r t}$	holds for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$, while the globally exponentially stable means that $\mathbb{E}[V(\rho_t)]\leq V(\rho_0) e^{-r t}$ holds for $\forall \rho_0, \rho_{t} \in \mathcal{S}$.
+\end{rmk}
+\begin{rmk}
+	Recently, the state feedback had been proposed to achieve the exponential stabilization of $N$-level quantum angular momentum systems in \cite{LAMJ2019}, the idea and method in \cite{LAMJ2019} are similar to that in \cite{LAMC2018}, so the improvement method proposed in this subsection is applicable for the exponential stabilization of $N$-level quantum systems. In particular, the state feedback controller in Theorem 6.4 of \cite{LAMJ2019} is the same as \eqref{eq:sf_u1}, thus the improvement method as shown in \eqref{eq:sf_u1_imp} can be applied directly. Namely, the improvement techniques of feedback strategies proposed in this subsection are suitable for not only quantum spin-$\frac{1}{2}$ systems but also $N$-level quantum systems.
+\end{rmk}
+
+\subsection{Improvement of switching state feedback}
+For the exponential stabilization of quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus}, we proposed switching state feedback in \cite{WSJZJ2021b} by combing continuous state feedback \eqref{eq:sf_u1} and the following continuous state feedback
+\begin{equation}\label{eq:sf_u2}
+	u_t^{\mathrm{csf_2}}\left(\rho_{t}\right)=-\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)
+\end{equation}
+based on which we design another switching state feedback as
+\begin{equation}\label{eq:ssf_u_imp}
+	\begin{aligned}
+		u_t^{\mathrm{ssfm}}\left(\rho_{t}\right)=\left(k\left(\rho_{t}\right)\alpha-\left(1-k\left(\rho_{t}\right)\right)\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)\right)V^{\beta}\left(\rho_{t}\right)
+		-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)
+	\end{aligned}
+\end{equation}
+where, 
+\begin{equation}\label{eq:k_rho}
+	k\left(\rho_{t}\right)=\left\{\begin{array}{l}
+		-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}, \text{if}~\operatorname{tr}\left(i\left[\sigma_{y}, \rho_t\right] \rho_f\right)\neq0 \\
+		0, otherwise
+	\end{array}\right.
+\end{equation}
+with $\xi\ge 1$, while $k\left(\rho_{t}\right)=\left\{ \begin{array}{l}0 , \text{if}~\rho_t\in\Phi_1\\ 1, \text{if}~ \rho_t\in\Phi_2 \end{array} \right.$ in \cite{WSJZJ2021b}. For the switching state feedback \eqref{eq:ssf_u_imp}, we present the corresponding result in Theorem \ref{thm:exponentially_stable_ssf}.
+\begin{thm}\label{thm:exponentially_stable_ssf}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the switching state feedback \eqref{eq:ssf_u_imp}, the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-r t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$ with the convergence rate $r\ge\frac{{\eta M}}{2}\lambda^{2}$,  i.e., the target eigenstate $\rho_f$ is locally exponentially stable. In particular, the state convergence under \eqref{eq:ssf_u_imp} is faster than that under the switching state feedback in \cite{WSJZJ2021b}  for the state subspace $\mathcal{D}_\lambda$.
+\end{thm}
+\begin{proof}
+	The infinitesimal generator $\mathcal{A}$ associated with quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} and the switching state feedback \eqref{eq:ssf_u_imp} acts on $V(\rho_{t})$ is given by
+	\begin{equation}\label{eq:LV_sf}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{ssfm}}\left(\rho_{t}\right)
+			=&\frac{1}{4}\left(\left(k\left(\rho_{t}\right)\alpha-\left(1-k\left(\rho_{t}\right)\right)\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)\right)V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)\right) \frac{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{V\left(\rho_{t}\right)}\\
+			&-\frac{\eta M}{2}\operatorname{tr}^2\left(\rho_{t} {\rho_f}\right) V\left(\rho_{t}\right)\\
+			=&\frac{\alpha}{4}k\left(\rho_{t}\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)V^{\beta-1}\left(\rho_{t}\right)
+			-\frac{\alpha}{4}\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)	V^{\beta-1}\left(\rho_{t}\right)\\
+			&-\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{4V\left(\rho_{t}\right)}-\frac{\eta M}{2}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right) V\left(\rho_{t}\right)\\
+			=&-\frac{1}{2}\left({\eta M}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right)+\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{2V^2\left(\rho_{t}\right)}
+			-\frac{\alpha}{2}k\left(\rho_{t}\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right) V^{\beta-2}\left(\rho_{t}\right)\right.\\
+			&\left.+\frac{\alpha}{2}\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)	V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)\\
+			=&-\frac{1}{2}\left(\Lambda-k\left(\rho_{t}\right)\Omega+\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\Omega\right)V\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation}
+	in which $\Omega=\frac{\alpha}{2}\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right) V^{\beta-2}\left(\rho_{t}\right)$, while the $\mathcal{A}$ associated with \eqref{eq:model_focus} and the switching state feedback in \cite{WSJZJ2021b} acts on $V(\rho_{t})$ is
+	\begin{equation}\label{eq:LV_sf_u}
+		\begin{aligned}
+			\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)=\left\{ \begin{array}{l}-\frac{1}{2}\left(\Lambda+\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)	\Omega\right)V\left(\rho_{t}\right), \text{if}~ \rho_t\in\Phi_1\\-\frac{1}{2}\left(\Lambda-\Omega\right)V\left(\rho_{t}\right) , \text{if}~\rho_t\in\Phi_2 \end{array} \right.
+		\end{aligned}
+	\end{equation}
+	
+	When $\rho_t\in\Phi_1$, $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)>0$, so $k\left(\rho_{t}\right)=-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}<0$, which leads to
+	\begin{equation}\label{eq:ass1}
+		k\left(\rho_{t}\right)\left(\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)+ \operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\right)<0
+	\end{equation}
+	From \eqref{eq:ass1}, we can obtain that
+	\begin{equation}\label{eq:ass1_1}
+		\begin{aligned}
+			-k\left(\rho_{t}\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right) +\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)
+			>\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)
+		\end{aligned}
+	\end{equation}
+	which results in
+	\begin{equation}\label{eq:ass1_2}
+		\begin{aligned}
+			-k\left(\rho_{t}\right)\Omega +\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\Omega>\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\Omega
+		\end{aligned}
+	\end{equation}
+	thus, $\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)<\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)$, which means the state convergence rate under \eqref{eq:ssf_u_imp} is larger than that under the switching state feedback in \cite{WSJZJ2021b} when $\rho_{t}\in\Phi_1$.
+	
+	Let $\Phi_3=\left\{\rho:\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)=0, \rho\in \mathcal{D}_\lambda\right\}$,
+	when $\rho_t\in\Phi_2\setminus\Phi_3$, $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)<0$, so $k\left(\rho_{t}\right)=-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}>1$, thereby
+	\begin{equation}\label{eq:ass2}
+		\left(1-k\left(\rho_{t}\right)\right)\left(1+\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\right)<0
+	\end{equation}
+	which leads to
+	\begin{equation}\label{eq:ass2_1}
+		\begin{aligned}
+			-k\left(\rho_{t}\right)\Omega +\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\Omega>-\Omega
+		\end{aligned}
+	\end{equation}
+	that means $\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)<\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)$, i.e., the state convergence rate under \eqref{eq:ssf_u_imp} is larger than that under the switching state feedback in \cite{WSJZJ2021b} when $\rho_{t}\in\Phi_2\setminus\Phi_3$.
+	
+	When $\rho_t\in\Phi_3$, we have $k\left(\rho_{t}\right)=0$ from \eqref{eq:k_rho} due to $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)=0$, so 
+	\begin{equation}
+		\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)=\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)=-\frac{1}{2}{\eta M}\operatorname{tr}^{2}\left(\rho_{t} {\rho_f}\right)V\left(\rho_{t}\right)
+	\end{equation}
+	which means the state convergence rates under \eqref{eq:ssf_u_imp} and the switching state feedback in \cite{WSJZJ2021b} are same when $\rho_{t}\in\Phi_3$.
+	
+	Combining all comparison results, the state convergence under \eqref{eq:ssf_u_imp} is faster than that under the switching state feedback in \cite{WSJZJ2021b} for the state subspace $\mathcal{D}_\lambda$.
+	Moreover, when $\rho_{t}\in \mathcal{D}_\lambda$, \eqref{eq:LV_sf} becomes
+	\begin{equation}\label{eq:LV_sf_ieq}
+		\begin{aligned}
+			\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)<&-\frac{1}{2}\left({\eta M}\lambda^{2}+\frac{\gamma\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)}{2V^2\left(\rho_{t}\right)}
+			-\frac{\alpha}{2}k\left(\rho_{t}\right)\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right) V^{\beta-2}\left(\rho_{t}\right)\right.\\
+			&\left.+\frac{\alpha}{2}\left(1-k\left(\rho_{t}\right)\right)\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)	V^{\beta-2}\left(\rho_{t}\right)\right)V\left(\rho_{t}\right)\\
+			\le&-\frac{1}{2}{\eta M}\lambda^{2}V\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation}
+	By the similar discussion to \eqref{eq:LV_sf_imp_ieq}, one can obtain from \eqref{eq:LV_sf_ieq} that
+	\begin{equation}\label{eq:LV_sf_final2}
+		\begin{aligned}
+			\mathbb{E}\left[V(\rho_t)\right]\leq V({\rho}_0) e^{-\frac{\eta M}{2}\lambda^{2}t}, \forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda
+		\end{aligned}
+	\end{equation}
+	which means that $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-\gamma t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in \mathcal{D}_\lambda$ with the convergence rate $r$ that is not less than $\frac{\eta M}{2}\lambda^{2}$, so that the target eigenstate $\rho_f$ is locally exponentially stable. The proof is complete.
+\end{proof}
+
+\begin{rmk}
+	According to the definition of $\mathcal{D}_\lambda$, the state subspace $\mathcal{D}_\lambda$ can cover more space of the entire state space $\mathcal{S}$ with the smaller $\lambda$, so the smaller $\lambda$ is recommended for the larger space where the exponential stabilization of quantum spin-$\frac{1}{2}$ systems holds under the state feedback. However, the smaller $\lambda$ leads to smaller exponential convergence rate based on \eqref{eq:LV_sf_imp_ieq} and \eqref{eq:LV_sf_ieq}. Thus, there is a tradeoff for the value of $\lambda$. 
+\end{rmk}
+\begin{rmk}
+	Although the minimum state convergence rate under \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp}  are same, the comparison conclusion of real-time state convergence rate is not consistent with that of the minimum state convergence rate. Actually, the real-time state convergence under \eqref{eq:sf_u1_imp} is different from that under \eqref{eq:ssf_u_imp} by comparing \eqref{eq:LV_sf_imp} and \eqref{eq:LV_sf} though the minimum state convergence rates under \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp} are equal.
+\end{rmk}
+\begin{rmk}\label{rmk:2}
+	There are several state feedback strategies that can achieve the exponential stabilization of eigenstates for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus}. In general, for the real-time state convergence, we have $\{\eqref{eq:sf_u1_imp}, \eqref{eq:ssf_u_imp}\}\succ$ \cite{WSJZJ2021b} $\succ\{\eqref{eq:sf_u1}, \eqref{eq:sf_u2}\}$ by comparing \eqref{eq:LV_sf_imp}, \eqref{eq:LV_sf_u1}, \eqref{eq:LV_sf} and \eqref{eq:LV_sf_u}.
+\end{rmk}
+
+According to the definition of $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho}, when the absolute value of $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)$ is small, $k\left(\rho_{t}\right)$ will be relatively large, which can lead to the feedback control with large amplitude based on \eqref{eq:ssf_u_imp}. Taking into account the practical application, the feedback control with too large amplitude should be avoided as far as possible. To this end, $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho} can be changed as
+\begin{equation}\label{eq:k_rho_imp}
+	k\left(\rho_{t}\right)=\left\{\begin{array}{l}
+		-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}, \text{if}~\rho_{t}\in \mathcal{D}_\lambda\setminus\Phi_4 \\
+		0, \text{if}~\rho_{t}\in\Phi_4
+	\end{array}\right.
+\end{equation}
+where, $\Phi_4=\left\{\rho:\left|\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)\right|\le\varepsilon~\text{or}~\left|\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)\right|\right.$ $\left.=1, \rho\in \mathcal{D}_\lambda\right\}$ with $0<\varepsilon<1$. Based on \eqref{eq:k_rho_imp}, we have the following result.
+\begin{thm}\label{thm:exponentially_stable_ssf_imp}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the switching state feedback \eqref{eq:ssf_u_imp} with the control parameter $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp} instead of \eqref{eq:k_rho}, the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]\le e^{-r t} V\left(\rho_{0}\right)$ for $\forall \rho_{0}, \rho_{t}\in\mathcal{D}_\lambda$ with the convergence rate $r\ge\frac{{\eta M}}{2}\lambda^{2}$, i.e., the target eigenstate $\rho_f$ is locally exponentially stable. In particular, the state convergence under \eqref{eq:ssf_u_imp} is faster than that under the switching state feedback in \cite{WSJZJ2021b} for the state subspace $\mathcal{D}_\lambda$.
+\end{thm}
+\begin{proof}
+	The main part of the proof is similar to that of Theorem \ref{thm:exponentially_stable_ssf}, so we mainly present the different points here. 
+	
+	When $\rho_t\in\Phi_1\setminus\Phi_4=\left\{\rho:\varepsilon<\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)<1,\right.$ $\left. \rho\in \mathcal{D}_\lambda\right\}$, it is easy to obtain that 
+	$$-\frac{\xi}{\varepsilon}<k\left(\rho_{t}\right)=-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}<-\xi<0$$
+	which leads to that the inequalities \eqref{eq:ass1}, \eqref{eq:ass1_1} and \eqref{eq:ass1_2} hold, thereby $\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)<\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)$. Namely, the state convergence rate under \eqref{eq:ssf_u_imp} with $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp}  is larger than that under the switching state feedback in \cite{WSJZJ2021b} when $\rho_t\in\Phi_1\setminus\Phi_4$.
+	
+	When $\rho_t\in\Phi_2\setminus\Phi_4=\left\{\rho:-1<\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)<-\varepsilon,\right.$ $\left.\rho\in \mathcal{D}_\lambda\right\}$, it is easy to obtain that 
+	$$1\le\xi<k\left(\rho_{t}\right)=-\frac{\xi}{\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)}<\frac{\xi}{\varepsilon}$$
+	which leads to that the inequalities \eqref{eq:ass2} and \eqref{eq:ass2_1} hold, so $\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)<\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)$, i.e., the state convergence rate under \eqref{eq:ssf_u_imp} with $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp} is larger than that under the switching state feedback in \cite{WSJZJ2021b} when $\rho_t\in\Phi_2\setminus\Phi_4$.
+	
+	When $\rho_t\in\Phi_4$, $k\left(\rho_{t}\right)=0$, so $\mathcal{A} V_{\mathrm{ssfm}}\left(\rho_{t}\right)=\mathcal{A} V_{\mathrm{ssf}}\left(\rho_{t}\right)$,
+	which means that the state convergence rates under \eqref{eq:ssf_u_imp} with $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp} and the switching state feedback in \cite{WSJZJ2021b} are same when $\rho_{t}\in\Phi_4$.
+	
+	Combining all comparison results, the state convergence under \eqref{eq:ssf_u_imp} with $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp} is faster than that under the switching state feedback in \cite{WSJZJ2021b} for the state subspace $\mathcal{D}_\lambda$. The proof is complete.
+\end{proof}
+
+The feedback control in \cite{WSJZJ2021b} for the exponential stabilization of quantum spin-$\frac{1}{2}$ systems is designed by combing \eqref{eq:sf_u1} and \eqref{eq:sf_u2}, we modify the feedback control in \cite{WSJZJ2021b} to \eqref{eq:ssf_u_imp} in this subsection. Comparing \eqref{eq:ssf_u_imp} with \eqref{eq:sf_u1} and \eqref{eq:sf_u2}, we use $k\left(\rho_{t}\right)\alpha-\left(1-k\left(\rho_{t}\right)\right)\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)$ instead of $\alpha$ and $-\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)$ respectively. It is obvious that $\alpha$ and $-\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)$ are the special cases of  $k\left(\rho_{t}\right)\alpha-\left(1-k\left(\rho_{t}\right)\right)\alpha \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)$, i.e., the cases of $k\left(\rho_{t}\right)=0$ and $k\left(\rho_{t}\right)=1$. In other words, we design time-varying coefficient $k\left(\rho_{t}\right)$ in this subsection instead of the constant coefficient $0$ and $1$ to achieve the faster state convergence as described in Theorem \ref{thm:exponentially_stable_ssf_imp}.
+
+
+\section{Global Exponential Stabilization}\label{Sec:Global}
+As described in Theorems \ref{thm:exponentially_stable_csfimp}, \ref{thm:exponentially_stable_ssf} and \ref{thm:exponentially_stable_ssf_imp}, the target eigenstate $\rho_{f}$ is only exponential stability in the state subspace $\mathcal{D}_\lambda$ under the improved state feedback \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp}. In order to achieve the global exponential stabilization of $\rho_{f}$, i.e., make the system state $\rho_{t}$ exponentially converge to $\rho_{f}$ from an arbitrary initial state $\rho_{0}$ in the entire state space $\mathcal{S}$, or, put another way, make $\mathbb{E}\left[V(\rho_t)\right]\leq V(\rho_0) e^{-\gamma t}$ hold for $\forall \rho_0, \rho_{t}\in \mathcal{S}$ instead of $\forall \rho_0, \rho_{t}\in \mathcal{D}_\lambda$, we can have the aid of noise-assisted feedback as shown in \cite{WSJZJ2021c}. Now, we show the technical details and results in this section.
+
+The combined feedback proposed in \cite{WSJZJ2021c} is designed as
+\begin{equation}\label{eq:comb}
+	\begin{aligned}
+		u_t^{\mathrm{cf}}dt=K\left(\rho_t\right) u_t^{\mathrm{sf}}dt+ \left(1-K\left(\rho_t\right)\right)u_t^{\mathrm{nf}}dt
+	\end{aligned}
+\end{equation}
+where, $K\left(\rho_t\right)\in\{0,1\}$, $u_t^{\mathrm{sf}}$ and $u_t^{\mathrm{nf}}$ represent the state feedback and noise-assisted feedback, respectively, which take the form
+\begin{equation}\label{eq:sf}
+	u_t^{\mathrm{sf}}dt=f\left(\rho_t\right)dt
+\end{equation}
+and
+\begin{equation}\label{eq:naf}
+	u_t^{\mathrm{nf}}dt=g\left(\rho_t\right)dB_t
+\end{equation}
+respectively, where $B_t$ is an exogenous Brownian noise independent of $W_t$. Based on \eqref{eq:sf} and \eqref{eq:naf}, the combined feedback \eqref{eq:comb} can be written as
+\begin{equation}\label{eq:comb_1}
+	\begin{aligned}
+		u_t^{\mathrm{cf}}dt=K\left(\rho_t\right) f\left(\rho_t\right)dt+\left(1-K\left(\rho_t\right)\right)g\left(\rho_t\right)dB_t
+	\end{aligned}
+\end{equation}
+under which the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} can be written as
+\begin{equation}\label{eq:model_focus_1}
+	\begin{aligned}
+		d \rho_t=&-{{i}}\frac{\omega_{eg}}{2}\left[\sigma_z, \rho_{t}\right]dt+\frac{M}{4}\left(\sigma_z \rho_t \sigma_z-\rho_t\right) d t-{{i}} K\left(\rho_t\right) \frac{f\left(\rho_t\right)}{2}\left[\sigma_{y}, \rho_{t}\right] dt-{{i}} \left(1-K\left(\rho_t\right)\right)\frac{g\left(\rho_t\right)}{2}[\sigma_y, \rho_t] d B_t\\
+		&+\left(1-K\left(\rho_t\right)\right)^2\frac{g\left(\rho_t\right)^{2}}{4}\left(\sigma_y \rho_t \sigma_y-\rho_t\right) d t+\frac{\sqrt{\eta M}}{2} \left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right) d W_t
+	\end{aligned}
+\end{equation}
+In this section, we use improved state feedback \eqref{eq:sf_u1_imp} as $u_t^{\mathrm{sf}}$ and use linear noise-assisted feedback presented in \cite{WSJZJ2021} as $u_t^{\mathrm{nf}}$, thereby
+\begin{subequations}\label{eq:csffandg}
+	\begin{align}
+		f\left(\rho_t\right)&=\kappa\left(\rho_{t}\right)\alpha V^{\beta}\left(\rho_{t}\right)-\gamma \operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)\\
+		g\left(\rho_t\right)&=\vartheta V\left(\rho_{t}\right)
+	\end{align}
+\end{subequations}
+with $\vartheta>0$ in the combined feedback \eqref{eq:comb_1}.
+Based on \eqref{eq:model_focus_1} and \eqref{eq:csffandg}, we have the following result.
+\begin{thm}\label{thm:exponentially_stable_f1}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus_1} under the combined feedback \eqref{eq:comb_1} with \eqref{eq:csffandg} and the control parameter
+	\begin{equation}\label{eq:kappa_1}
+		K\left(\rho_t\right)=\left\{ \begin{array}{l}1, \text{if}~\rho_t\in \mathcal{D}_\lambda\\ 0, \text{if}~\rho_t\in \mathcal{S}\setminus \mathcal{D}_\lambda\end{array} \right. 
+	\end{equation}
+	the target eigenstate $\rho_f$ is globally exponentially stable, and the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]<e^{-rt} V\left(\rho_{0}\right)$ for $\forall \rho_0, \rho_{t}\in \mathcal{S}$ with the convergence rate $r$ that is not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}$ if $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset$ and not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}$ if $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5=\emptyset$, where $\Phi_5=\left\{\rho:\operatorname{tr}\left(\rho\rho_f\right)=\frac{\vartheta^2}{4\eta M}, \rho\in \mathcal{S}\right\}$. 
+\end{thm}
+\begin{proof}
+	When $\rho_t\in \mathcal{S}\setminus \mathcal{D}_\lambda$, $K\left(\rho_t\right)=0$ and the noise-assisted feedback works, \eqref{eq:model_focus_1} becomes
+	\begin{equation}\label{eq:model_focus_2}
+		\begin{aligned}
+			d \rho_t=&-{{i}}\frac{\omega_{eg}}{2}\left[\sigma_z, \rho_{t}\right]dt+\frac{M}{4}\left(\sigma_z \rho_t \sigma_z-\rho_t\right) d t-{{i}}\frac{g\left(\rho_t\right)}{2}\left[\sigma_y, \rho_t\right] d B_t+\frac{g\left(\rho_t\right)^{2}}{4}\left(\sigma_y \rho_t \sigma_y-\rho_t\right) d t\\
+			&+\frac{\sqrt{\eta M}}{2} \left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right) d W_t
+		\end{aligned}
+	\end{equation}
+	and then the infinitesimal generator $\mathcal{A}$ associated with \eqref{eq:model_focus_2} acts on $V(\rho_{t})$ is given by
+	\begin{equation}\label{eq:LV_cf}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)
+			=-\frac{g^{2}(\rho_{t})\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)}{8\sqrt{1-\operatorname{tr}\left(\rho_t \rho_{f}\right)}}
+			-\frac{\eta M (1-\operatorname{tr}(\rho_{t}\sigma_z))^{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)}{8\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}
+			-\frac{g^{2}\left(\rho_t\right)\operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)}{32\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}
+		\end{aligned}
+	\end{equation}
+	whose detailed derivations are shown in Appendix \ref{Sec:Appendix}, from which we have
+	\begin{equation}\label{eq:LV_cf_1}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)
+			\le&-\frac{g^{2}(\rho_{t})\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)}{8\sqrt{1-\operatorname{tr}\left(\rho_t \rho_{f}\right)}}-\frac{\eta M (1-\operatorname{tr}(\rho_{t}\sigma_z))^{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)}{8\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}\\
+			=&-\frac{g^{2}(\rho_{t})\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)}{8V\left(\rho_{t}\right)}-\frac{\eta M (1-\operatorname{tr}(\rho_{t}\sigma_z))^{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)}{8V^3\left(\rho_{t}\right)}
+		\end{aligned}
+	\end{equation}
+	due to $\frac{g^{2}\left(\rho_t\right)\operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)}{\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}\ge0$. Besides, for two-level quantum systems, the system state $\rho_{t}$ can be characterized by the Bloch sphere coordinates $(x_t, y_t, z_t)$ as
+	\begin{equation}\label{eq:rho_bloch}
+		\begin{aligned}
+			\rho_t=\frac{\mathbb{I}_2+x_t \sigma_{x}+y_t \sigma_{y}+z_t \sigma_{z}}{2}
+			=\frac{1}{2}\left[\begin{array}{cc}
+				1+z_t & x_t-iy_t \\
+				x_t+iy_t & 1-z_t
+			\end{array}\right]
+		\end{aligned}
+	\end{equation}
+	with $(x_t, y_t, z_t)\in \left\{(x, y, z) \in \mathbb{R}^{3}: x^{2}+y^{2}+z^{2} \leq 1\right\}$ and $\mathbb{I}_2=\left[\begin{array}{cc}
+		1 & 0 \\
+		0 & 1
+	\end{array}\right]$ is the $2\times2$ identity matrix, so
+	$1-\operatorname{tr}\left(\rho_{t}\sigma_z\right)=2V\left(\rho_{t}\right)$, which results in that \eqref{eq:LV_cf_1} becomes
+	\begin{equation}\label{eq:LV_cf_2}
+		\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)\le-\left(\frac{1}{8}\vartheta^2\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)+\frac{\eta M}{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)\right)V\left(\rho_{t}\right)
+	\end{equation}
+	
+	Let $\psi\left(\rho_{t}\right)=\frac{1}{8}\vartheta^2\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)+\frac{\eta M}{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)$, and then $\psi\left(\rho_{t}\right)$ can also be written as $\psi\left(\rho_{t}\right)=\Psi\left(z_t\right)=\frac{1}{8}\left(\eta M\left(1+z_t\right)^2-\vartheta^2z_t\right)$ based on \eqref{eq:rho_bloch}. From the proof of Theorem 1 in \cite{WSJZJ2021}, $\min \limits_{-1\le z_t\le1} \eta M\left(1+z_t\right)^2-\vartheta^2z_t=\eta M$ when $z_t=1-\frac{\vartheta^2}{2\eta M}$, which corresponds to $\rho_t\in \Phi_5$, and leads to $\min \limits_{-1\le z_t\le1} \Psi\left(z_{t}\right)=\min \limits_{\rho_{t}\in \mathcal{S}} \psi\left(\rho_{t}\right)=\frac{1}{8}\eta M$. Different from \cite{WSJZJ2021}, the noise-assisted feedback works in $\mathcal{S}\setminus \mathcal{D}_\lambda$ instead of $\mathcal{S}$ according to \eqref{eq:comb_1} and \eqref{eq:kappa_1}, so $\min \limits_{\rho_{t}\in \mathcal{S}\setminus \mathcal{D}_\lambda} \psi\left(\rho_{t}\right)=\frac{1}{8}\eta M$ when $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset$. If $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5=\emptyset$, because $\Psi\left(z_{t}\right)$ is a monotone decreasing function when $z_t\in\left[-1, 2\lambda-1\right]$, $\min \limits_{\rho_{t}\in \mathcal{S}\setminus \mathcal{D}_\lambda} \psi\left(\rho_{t}\right)=\min \limits_{-1\le z_t\le2\lambda-1} \Psi\left(z_{t}\right)=\frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)$ when $z_t=2\lambda-1$, which corresponds to $\rho_t\in \Phi_6=\left\{\rho:\operatorname{tr}\left(\rho\rho_f\right)=\lambda, \rho\in \mathcal{S}\right\}$. 
+	Thus, \eqref{eq:LV_cf_2} becomes 
+	\begin{equation*}
+		\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)\le\left\{ \begin{array}{l}-\frac{1}{8}\eta MV\left(\rho_{t}\right), \text{\textit{if}}~\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset\\ -\left(\frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right)V\left(\rho_{t}\right), \text{\textit{otherwise}}\end{array} \right. 
+	\end{equation*}
+	
+	On the other hand, when $\rho_{t}\in \mathcal{D}_\lambda$, $\mathcal{A} V_{\mathrm{csfm}}\left(\rho_{t}\right)\le-\frac{1}{2}{\eta M}\lambda^2V\left(\rho_{t}\right)$ from \eqref{eq:LV_sf_imp_ieq}, so
+	\begin{equation*}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{cf}}\left(\rho_{t}\right)\le
+			\left\{ \begin{array}{l}-\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}V\left(\rho_{t}\right), 	\text{\textit{if}}~\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset\\ -\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}V\left(\rho_{t}\right), \text{\textit{otherwise}}\end{array} \right. 
+		\end{aligned}
+	\end{equation*}
+	such that 
+	\begin{equation*}
+		\begin{aligned}
+			\mathbb{E}[V(\rho_t)]\leq V(\rho_0) e^{-r t} 
+			\leq\left\{ \begin{array}{l}V(\rho_0) e^{-\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}t}, \text{\textit{if}}~\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset\\ V(\rho_0) e^{-\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}t}, \text{\textit{otherwise}}\end{array} \right. 
+		\end{aligned}
+	\end{equation*}
+	for $\forall \rho_{0},\rho_{t}\in \mathcal{S}$. According to Theorem 3 in \cite{CSRJ2020} and the fact that $V\left(\rho_t\right)= 0$ if and only if $\rho_{t}=\rho_{f}$, the target eigenstate $\rho_f$ is globally exponentially stable with the convergence rate $r$ that is not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}$ if $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5\neq\emptyset$ and not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}$ if $\mathcal{S}\setminus \mathcal{D}_\lambda\cap\Phi_5=\emptyset$. The proof is complete.
+\end{proof}
+\begin{rmk}\label{rmk:comment_of_other_strategies}
+	In Theorem \ref{thm:exponentially_stable_f1}, we use state feedback \eqref{eq:sf_u1_imp} and linear	noise-assisted feedback to form the combined feedback, and achieve the global exponential stabilization of eigenstates for quantum spin-$\frac{1}{2}$ systems with the larger convergence rate. {\color{red}{In particular, the way of achieving global exponential stabilization proposed in this section is also suitable for $N$-level quantum systems due to the similarity of state feedback designed in \cite{LAMJ2019}. Besides,}} the combinations, including state feedback \eqref{eq:ssf_u_imp} and linear noise-assisted feedback, state feedback \eqref{eq:sf_u1_imp} and exponential noise-assisted feedback presented in \cite{WSJZJ2021}, as well as state feedback \eqref{eq:ssf_u_imp} and exponential noise-assisted feedback in \cite{WSJZJ2021},  can all  achieve the global exponential stabilization of eigenstates for quantum spin-$\frac{1}{2}$ systems. The results are easy to expand, and the proofs are similar to that of Theorem \ref{thm:exponentially_stable_f1}, so we ignore them in this paper. A schematic diagram of the division of state space $\mathcal{S}$ is shown in Fig. \ref{figur:diagram}. 
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=0.4\textwidth,angle=0]{diagramv1.eps}
+		\caption{Schematic diagram of the division of state space $\mathcal{S}$. The blue, flesh red, yellow and purple areas represent the state subspaces $\Phi_1$, $\Phi_2$, $\Phi_3$ and $\Phi_4$ respectively, while the green dashed line and solid line represent the state subspaces $\Phi_5$ and $\Phi_6$, respectively, and the area covered by the black diagonal lines represents the state subspace $\mathcal{S}\setminus\mathcal{D}_\lambda$. The state space $\mathcal{D}_\lambda=\Phi_1\cup\Phi_2$ and $\rho_{f}\in \Phi_2$, while $\rho_{eq}$ represents any eigenstate but the target eigenstate $\rho_{f}$ and $\rho_{eq}\in \mathcal{S}\setminus\mathcal{D}_\lambda$.}
+		\label{figur:diagram}
+	\end{figure}
+\end{rmk}
+
+\section{Design of the divisions of state space $\mathcal{S}$}\label{Sec:Optimization_of_division}
+In Section \ref{Sec:Global}, the role of noise-assisted feedback is only to ensure the global exponential stabilization and only works in the state subspace $\mathcal{S}\setminus \mathcal{D}_\lambda$, while the noise-assisted feedback in \cite{WSJZJ2021c} is used to not only ensure the global exponential stabilization but also obtain faster state convergence, and works in the larger state subspace that includes $\mathcal{S}\setminus \mathcal{D}_\lambda$. Namely, noise-assisted feedback plays more role in \cite{WSJZJ2021c}. Moreover, the methods of obtaining faster state convergence are different in Section \ref{Sec:ControlDesign} and \cite{WSJZJ2021c}. In Section \ref{Sec:ControlDesign}, we improve the state feedback to make the system state converge faster, while we achieved the same goal by designing the division of state space  $\mathcal{S}$ in \cite{WSJZJ2021c}. Therefore, the more reasonable way of obtaining faster state convergence is to use the method of both improving the state feedback as shown in Section \ref{Sec:ControlDesign} and designing the division of $\mathcal{S}$ as presented in \cite{WSJZJ2021c}, which will be presented in this section.
+
+If the division of $\mathcal{S}$ is redesigned, and the improved state feedback \eqref{eq:sf_u1_imp} and linear noise-assisted feedback in \cite{WSJZJ2021} are still used in combined feedback, we can obtain faster state convergence than that under the combined feedback designed in Theorem \ref{thm:exponentially_stable_f1}, the detailed results are shown in Theorem \ref{thm:exponentially_stable_csfimp_redesignS}.
+\begin{thm}\label{thm:exponentially_stable_csfimp_redesignS}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus_1} under the combined feedback \eqref{eq:comb_1} with the control parameter
+	$K\left(\rho_t\right)=\left\{ \begin{array}{l}1, \text{if}~\rho_t\in \Phi_{\mathrm{sf}}\\ 0, \text{if}~\rho_t\in \Phi_{\mathrm{nf}}\end{array} \right. $,
+	where $\Phi_{\mathrm{sf}}=\{\rho\in \mathcal{S}:\chi\left(\rho\right)<8\alpha|\operatorname{tr}\left(i\left[\sigma_{y}, \rho\right] {\rho_f}\right)| V^{\beta}\left(\rho\right)\}\cap \mathcal{D}_\lambda$ with $\chi\left(\rho\right)=4\vartheta^2V^2\left(\rho\right)\left(2V^2\left(\rho\right)-1\right)+\left(\vartheta^2-8\gamma \right)\operatorname{tr}^2\left(i\left[\sigma_y, \rho\right]\rho_{f}\right)$, and $\Phi_{\mathrm{nf}}=\mathcal{S}\setminus\Phi_{\mathrm{sf}}$, then the target eigenstate $\rho_f$ is globally exponentially stable, and the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]<e^{-rt} V\left(\rho_{0}\right)$ for $\forall \rho_0, \rho_{t}\in \mathcal{S}$ with the convergence rate $r$ that is not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}$ if $\mathcal{S}\setminus \Phi_{\mathrm{sf}}\cap\Phi_5\neq\emptyset$ and not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}$ if $\mathcal{S}\setminus \Phi_{\mathrm{sf}}\cap\Phi_5=\emptyset$. 
+\end{thm}
+\begin{proof}
+	When the state feedback works, the infinitesimal generator $\mathcal{L}$ associated with \eqref{eq:model_focus_1} acts on $V(\rho_{t})$ is given by \eqref{eq:LV_sf_imp}, while the $\mathcal{L}$ associated with \eqref{eq:model_focus_1} acts on $V(\rho_{t})$ is given by \eqref{eq:LV_cf} when the noise-assisted feedback works. Place (\ref{eq:csffandg}b) into \eqref{eq:LV_cf}, and consider that $\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t\rho_{f}\right)=2V^2\left(\rho_{t}\right)-1$ and $1-\operatorname{tr}(\rho_{t}\sigma_z)=2V^2\left(\rho_{t}\right)$, \eqref{eq:LV_cf} can be written as	
+	\begin{equation}\label{eq:LV_cf_final}
+		\begin{aligned}
+			\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)=-\frac{1}{2}\left(\frac{\vartheta^2}{4}\left(2V^2\left(\rho_{t}\right)-1\right)+\eta M \operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)+\frac{\vartheta^2 \operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)}{16V^2\left(\rho_{t}\right)}\right)V\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation}
+	
+	When $\rho_t\in \Phi_{\mathrm{sf}}$, we have $4\vartheta^2V^2\left(\rho_{t}\right)\left(2V^2\left(\rho_{t}\right)-1\right)+\left(\vartheta^2-8\gamma\right) \operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)
+	<8\alpha|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)|V^{\beta}\left(\rho_{t}\right)$,
+	thereby 
+	\begin{equation*}
+		\begin{aligned}
+			\frac{\vartheta^2}{4}\left(2V^2\left(\rho_{t}\right)-1\right)+\eta M \operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)+\frac{\vartheta^2 \operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)}{16V^2\left(\rho_{t}\right)}
+			<\Lambda+\frac{\alpha}{2}|\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)| V^{\beta-2}\left(\rho_{t}\right)
+		\end{aligned}
+	\end{equation*}
+	which means that $\mathcal{A}V_{\mathrm{sf}}\left(\rho_{t}\right)<\mathcal{A} V_{\mathrm{nf}}\left(\rho_{t}\right)$, i.e., the state convergence rate under state feedback is larger than that under noise-assisted feedback when $\rho_t\in \Phi_{\mathrm{sf}}$. Similarly, we can obtain that $\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)\le\mathcal{A} V_{\mathrm{sf}}\left(\rho_{t}\right)$ when $\rho_t\in \Phi_{\mathrm{nf}}$, which means the state convergence rate under noise-assisted feedback is larger when $\rho_t\in \Phi_{\mathrm{nf}}$. By the similar discussion to \eqref{eq:LV_sf_imp_ieq} and \eqref{eq:LV_cf_2} in the proof of Theorem \ref{thm:exponentially_stable_f1}, one can obtain that the target eigenstate $\rho_f$ is globally exponentially stable with the convergence rate $r$ that is not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}$ if $\mathcal{S}\setminus \Phi_{\mathrm{sf}}\cap\Phi_5\neq\emptyset$ and not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}$ if $\mathcal{S}\setminus \Phi_{\mathrm{sf}}\cap\Phi_5=\emptyset$. The proof is complete.
+\end{proof}
+
+The schematic diagram of the redesign division of state space $\mathcal{S}$ is shown in Fig. \ref{figur:re_diagram}.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth,angle=0]{re_diagramv1.eps}
+	\caption{Schematic diagram of the redesign division of state space $\mathcal{S}$. The blue area represents $\Phi_1$, the flesh red area represents $\Phi_2$,  the pink area represents $\Phi_{\mathrm{sf}}$, the green dashed line represent the state subspaces $\Phi_5$, while the area covered by the black diagonal lines represents $\mathcal{S}\setminus \mathcal{D}_\lambda$. The state space $\mathcal{S}=\Phi_{\mathrm{sf}}\cup\Phi_{\mathrm{nf}}$ and $\Phi_{\mathrm{sf}}\subset \mathcal{D}_\lambda$.}
+	\label{figur:re_diagram}
+\end{figure}
+
+If we use the improved state feedback \eqref{eq:ssf_u_imp} with the control parameter \eqref{eq:k_rho_imp} instead of \eqref{eq:sf_u1_imp} in combined feedback and redesign the division of $\mathcal{S}$, which is different from the division $\{\mathcal{D}_\lambda, \mathcal{S}\setminus\mathcal{D}_\lambda\}$, we have the following results as shown in Theorem \ref{thm:exponentially_stable_csfimp_redesignS2}.
+\begin{thm}\label{thm:exponentially_stable_csfimp_redesignS2}
+	For the quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus_1} under the combined feedback \eqref{eq:comb_1} with the control parameter
+	$K\left(\rho_t\right)=\left\{ \begin{array}{l}1, \text{if}~\rho_t\in \hat{\Phi}_{\mathrm{sf}}\\ 0, \text{if}~\rho_t\in \hat{\Phi}_{\mathrm{nf}}\end{array} \right.$, 
+	where $\hat{\Phi}_{\mathrm{sf}}=\{\rho\in \mathcal{S}:\chi\left(\rho\right)<8\alpha\left(\xi+\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] \rho_f\right)+\xi\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)\right)V^{\beta}\left(\rho_{t}\right)\}\cap D_\lambda$ if 
+	$\rho_t\notin\Phi_3$, while $\hat{\Phi}_{\mathrm{sf}}=\{\rho\in \mathcal{S}:\chi\left(\rho\right)<8\alpha\operatorname{tr}^2\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)V^{\beta}\left(\rho_{t}\right)\}\cap D_\lambda$ if 
+	$\rho_t\in\Phi_3$, and $\hat{\Phi}_{\mathrm{nf}}=\mathcal{S}\setminus\hat{\Phi}_{\mathrm{sf}}$, then the target eigenstate $\rho_f$ is globally exponentially stable, and the Lyapunov function $V(\rho_{t})=\sqrt{1-\operatorname{tr}\left(\rho_t\rho_f\right)}$ satisfies $\mathbb{E}\left[V\left(\rho_{t}\right)\right]<e^{-rt} V\left(\rho_{0}\right)$ for $\forall \rho_0,\rho_{t}\in \mathcal{S}$ with the convergence rate $r$ that is not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{1}{8}\eta M\right\}$ if $\mathcal{S}\setminus \hat{\Phi}_{\mathrm{sf}}\cap\Phi_5\neq\emptyset$ and not less than $\min\left\{\frac{{\eta M}}{2}\lambda^{2}, \frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)\right\}$ if $\mathcal{S}\setminus \hat{\Phi}_{\mathrm{sf}}\cap\Phi_5=\emptyset$. 
+\end{thm}
+\begin{proof}
+	The proof is similar to that of Theorem \ref{thm:exponentially_stable_csfimp_redesignS}, so we ignore it here.
+\end{proof}
+
+\section{Numerical Simulations}\label{Sec:NumSim}
+In this section, we use the proposed state feedback \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp} to exponentially stabilize the eigenstate $\rho_e$ in numerical simulations, which verify the effectiveness and and the superiority of \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp}, and compare the convergence rates under the different state feedback. It should be noted that the parameter $k\left(\rho_{t}\right)$ in \eqref{eq:k_rho_imp} is applied instead of \eqref{eq:k_rho} for the  state feedback \eqref{eq:ssf_u_imp} in this section. Besides, we use the combined feedback \eqref{eq:comb_1} with the redesigned state space division as shown in Theorem \ref{thm:exponentially_stable_csfimp_redesignS} to show the effect of designing the division of the entire state space $\mathcal{S}$.
+\subsection{Exponential stabilization of $\rho_e$ under state feedback \eqref{eq:sf_u1_imp}}\label{subsec:cfm}
+From \eqref{eq:rho_bloch}, it can be obtained that $\operatorname{tr}\left(i\left[\sigma_{y}, \rho_{t}\right] {\rho_f}\right)=x_{t}$, which results in $\Phi_1=\left\{x:0<x\le1\right\}$ and $\Phi_2=\mathcal{D}_\lambda\setminus\Phi_1$. Let the physical parameters $\omega_{eg}=0, \eta=0.5$, $M=1$ in \eqref{eq:model_focus}, the control parameters $\alpha=0.5$, $\beta=8$, $\gamma=5$, $\lambda=0.9$ in \eqref{eq:sf_u1_imp}, and the initial state is set as $\rho_0=\frac{1}{2}\left[\begin{array}{cc}
+	1 & 1 \\
+	1 & 1
+\end{array}\right]$, which corresponds to the point $\left(1, 0, 0\right)$ in the Bloch sphere, then the results of 10 experiments are shown in Fig. \ref{figur:numerical_results_1}, from which one can see that the quantum state $\rho_{t}$ converges to the target eigenstate $\rho_{e}$ from $\rho_0=\frac{1}{2}\left[\begin{array}{cc}
+	1 & 1 \\
+	1 & 1
+\end{array}\right]$ exponentially, which means that the state feedback \eqref{eq:sf_u1_imp} is available. {\color{red}{Besides, it can be seen from Fig. \ref{figur:numerical_results_1} that the exponential convergence rate under the state feedback  \eqref{eq:sf_u1_imp} is larger than the exponential reference rate $\frac{{\eta M}}{2}\lambda^{2}$, which is consistent with Theorem \ref{thm:exponentially_stable_csfimp}.}}
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{icsf_10_samples_linear.eps}%
+		\label{figur:numerical_results_1_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{icsf_10_samples_log.eps}%
+		\label{figur:numerical_results_1_b}}
+	\caption{Exponential stabilization of eigenstate $\rho_{e}$ for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback \eqref{eq:sf_u1_imp}. (a) The curves of $V\left(\rho_{t}\right)$ in 10 arbitrary sample trajectories, and the blue curve represents the mean value of 10 sample trajectories, while the red curve represents the exponential references with exponent $\frac{{\eta M}}{2}\lambda^{2}$; (b)  The semi-log version of (a).}
+	\label{figur:numerical_results_1}
+\end{figure}
+
+In order to compare the state convergence rate under the state feedback \eqref{eq:sf_u1} and \eqref{eq:sf_u1_imp}, we use \eqref{eq:sf_u1} to exponentially stabilize $\rho_{e}$ from $\rho_0=\frac{1}{2}\left[\begin{array}{cc}
+	1 & 1 \\
+	1 & 1
+\end{array}\right]$ with the same control parameters in \eqref{eq:sf_u1_imp}. The results are shown in Fig. \ref{figur:numerical_results_2}, from which one can see that the state convergence under  \eqref{eq:sf_u1_imp} is faster than that under \eqref{eq:sf_u1}. {\color{red}{The results in Fig. \ref{figur:numerical_results_2} show the improvement effect of using state feedback \eqref{eq:sf_u1}, and are also consistent with Theorem \ref{thm:exponentially_stable_csfimp}.}}
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_cmf_CDC_linear.eps}%
+		\label{figur:numerical_results_2_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_cmf_CDC_log.eps}%
+		\label{figur:numerical_results_2_b}}
+	\caption{Exponential stabilization of eigenstate $\rho_{e}$ for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback \eqref{eq:sf_u1} and \eqref{eq:sf_u1_imp}. (a) The green and brown curves represent the mean value of 10 arbitrary sample trajectories under \eqref{eq:sf_u1} and \eqref{eq:sf_u1_imp}, respectively, while the red curve represents the exponential references with exponent $\frac{{\eta M}}{2}\lambda^{2}$; (b)  The semi-log version of (a).}
+	\label{figur:numerical_results_2}
+\end{figure}
+\subsection{Exponential stabilization of $\rho_e$ under state feedback \eqref{eq:ssf_u_imp}}\label{subsec:sfm}
+In this subsection, we use the state feedback \eqref{eq:ssf_u_imp} to exponentially stabilize $\rho_{e}$ from $\rho_0=\frac{1}{2}\left[\begin{array}{cc}
+	1 & 1 \\
+	1 & 1
+\end{array}\right]$ with $\xi=2$ and $\varepsilon=0.05$, while the physical parameters and other control parameters are the same as that in subsection \ref{subsec:cfm}. The results are shown in Fig. \ref{figur:numerical_results_3}, from which one can see that the quantum state $\rho_{t}$ converges to the target eigenstate $\rho_{e}$ exponentially, which means that the state feedback \eqref{eq:ssf_u_imp} is available.
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{issf_10_samples_linear.eps}%
+		\label{figur:numerical_results_3_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{issf_10_samples_log.eps}%
+		\label{figur:numerical_results_3_b}}
+	\caption{Exponential stabilization of eigenstate $\rho_{e}$ for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback \eqref{eq:ssf_u_imp}. (a) The curves of $V\left(\rho_{t}\right)$ in 10 arbitrary sample trajectories, and the blue curve represents the mean value of 10 sample trajectories, while the red curve represents the exponential references with exponent $\frac{{\eta M}}{2}\lambda^{2}$; (b)  The semi-log version of (a).}
+	\label{figur:numerical_results_3}
+\end{figure}
+Similar, we also compare the state convergence under \eqref{eq:ssf_u_imp} and the state feedback proposed in \cite{WSJZJ2021b}, which is shown in Fig. \ref{figur:numerical_results_4}. It can be seen from Fig. \ref{figur:numerical_results_4} that the state convergence under \eqref{eq:ssf_u_imp} is faster than that under the state feedback in \cite{WSJZJ2021b}, as described in Theorem \ref{thm:exponentially_stable_ssf}. {\color{red}{The two trajectories in Fig. \ref{figur:numerical_results_4} are close, which seems to mean that the effect of improvement is not obvious as shown in Fig. \ref{figur:numerical_results_3}. In fact, the experiment results in Fig. \ref{figur:numerical_results_3} and Fig. \ref{figur:numerical_results_4} only have qualitative comparative significance instead of quantitative comparative significance due to the stochasticity of system trajectories. In other words, if we perform another 10 experiments or other number of randomized experiments, and present the results like Fig. \ref{figur:numerical_results_4}, it is possible that the two trajectories would not be so close. Thus, we only focus on the qualitative comparison instead of quantitative comparison in the result analysis of Fig. \ref{figur:numerical_results_4}.}}
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_sfm_subRINP_linear.eps}%
+		\label{figur:numerical_results_4_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_sfm_subRINP_log.eps}%
+		\label{figur:numerical_results_4_b}}
+	\caption{Exponential stabilization of eigenstate $\rho_{e}$ for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback in \cite{WSJZJ2021b} and \eqref{eq:ssf_u_imp}. (a) The cyan and purple curves represent the mean value of 10 arbitrary sample trajectories under \eqref{eq:ssf_u_imp} and the state feedback in \cite{WSJZJ2021b}, respectively, while the red curve represents the exponential references with exponent $\frac{{\eta M}}{2}\lambda^{2}$; (b)  The semi-log version of (a).}
+	\label{figur:numerical_results_4}
+\end{figure}
+
+As mentioned in Remark \ref{rmk:2}, for quantum spin-$\frac{1}{2}$ systems \eqref{eq:model_focus}, the state feedback \eqref{eq:sf_u1}, \eqref{eq:sf_u1_imp}, \eqref{eq:sf_u2}, $\eqref{eq:ssf_u_imp}$ and the state feedback in \cite{WSJZJ2021b} all can exponentially stabilize the target eigenstate, so we compare the state convergence rates under the all state feedback with the same physical parameters and control parameters as that in subsections \ref{subsec:cfm}. The comparison results are shown in Fig. \ref{figur:numerical_results_5}, from which we obtain that $\{\eqref{eq:sf_u1_imp}, \eqref{eq:ssf_u_imp}\} \succ$  \cite{WSJZJ2021b} $\succ \{ \eqref{eq:sf_u1}, \eqref{eq:sf_u2}\}$ for the real-time state convergence, which is consistent with Remark \ref{rmk:2}. The comparison results between \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp} and between \eqref{eq:sf_u1} and \eqref{eq:sf_u2} are uncertain.
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_all_linear.eps}%
+		\label{figur:numerical_results_5_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{compare_all_log.eps}%
+		\label{figur:numerical_results_5_b}}
+	\caption{Exponential stabilization of eigenstate $\rho_{e}$ for quantum spin-$\frac{1}{2}$ system \eqref{eq:model_focus} under the state feedback \eqref{eq:sf_u1}, \eqref{eq:sf_u1_imp}, \eqref{eq:sf_u2}, $\eqref{eq:ssf_u_imp}$ and the state feedback proposed in \cite{WSJZJ2021b}. (a) The green, black, purple, brown and cyan curves represent the mean value of 10 arbitrary sample trajectories under \eqref{eq:sf_u1}, \eqref{eq:sf_u2}, the state feedback in \cite{WSJZJ2021b}, \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp}, respectively, while the red curve represents the exponential references with exponent $\frac{{\eta M}}{2}\lambda^{2}$; (b)  The semi-log version of (a).}
+	\label{figur:numerical_results_5}
+\end{figure}
+
+\subsection{Exponential stabilization of $\rho_e$ under improved combined feedback}\label{subsec:icf}
+Let the physical parameters $\omega_{eg}=0.5$, the control parameters $\gamma=0.1$, $\vartheta=0.4$, $\lambda=0.5$, and the initial state is set as $\rho_g$, while other physical parameters and control parameters are the same as that in subsection \ref{subsec:cfm}. Under these parameters,  $\frac{{\eta M}}{2}\lambda^{2}=\frac{1}{8}\eta M=\frac{{\eta M}}{2}\lambda^{2}-\frac{1}{8}\vartheta^2\left(2\lambda-1\right)=0.0625$. The results of 30 experiments are shown in Fig. \ref{figur:V_100samples}, from which one can see that the system state $\rho_{t}$ converge to $\rho_{e}$ from $\rho_g$ exponentially, which means the proposed feedback control \eqref{eq:comb_1} with the control parameters in Theorem \ref{thm:exponentially_stable_csfimp_redesignS} is available. 
+%Moreover, We present the curve of $V\left(\rho_{t}\right)$ and $u_t^{\mathrm{cf}}\left(\rho_t\right)$ in a sample trajectory in Fig. \ref{figur:Samples}.
+\begin{figure}[!htbp]
+	\centering
+	\subfigure{\includegraphics[width=0.48\textwidth]{com_linear_30.eps}%
+		\label{figur:V_100samples_a}}
+	\hfil
+	\subfigure{\includegraphics[width=0.48\textwidth]{com_log_30.eps}%
+		\label{figur:V_100samples_b}}
+	\caption{Exponential stabilization of $\rho_{e}$ under the feedback control \eqref{eq:comb_1}. (a) The curves of $V\left(\rho_{t}\right)$ of 30  sample trajectories, and the blue curve is the mean value, while the red curve is the exponential reference with exponent 0.0625; (b)  The semi-log version of (a).}
+	\label{figur:V_100samples}
+\end{figure}
+%\begin{figure*}[!htbp]
+	%	\centering
+	%	\subfloat[]{\includegraphics[width=0.4\textwidth]{v_sample_final.eps}%
+		%		\label{figur:Samples_a}}
+	%	\hfil
+	%	\subfloat[]{\includegraphics[width=0.4\textwidth]{u_sample_final.eps}%
+		%		\label{figur:Samples_b}}
+	%	\caption{A sample trajectory of exponential stabilization of $\rho_{e}$ under the feedback control \eqref{eq:comb_1}. (a) The curve of $V\left(\rho_{t}\right)$ under feedback control \eqref{eq:comb_1} in a sample trajectory; (b)  The curve of the feedback control $u_t^{\mathrm{cf}}\left(\rho_t\right)$ in a sample trajectory. In (a) and (b), the pink background presents the time domain of $\rho_{t}\in\Phi_{\mathrm{nf}}$, while the white background represents the time domain of $\rho_{t}\in\Phi_{\mathrm{sf}}$.}
+	%\label{figur:Samples}
+	%\end{figure*}
+
+In order to present the superiority of the proposed improved feedback strategies in this paper, we use state feedback \eqref{eq:sf}, noise-assisted feedback \eqref{eq:naf} with \eqref{eq:csffandg} and the proposed feedback control \eqref{eq:comb_1} with the control parameters in Theorem \ref{thm:exponentially_stable_csfimp_redesignS} to exponentially stabilize the eigenstate $\rho_e$, respectively, whose the results is shown in Fig. \ref{figur:Compare}. From Fig. \ref{figur:Compare}, we can see that the state convergence under the proposed feedback control with the control parameters in Theorem \ref{thm:exponentially_stable_csfimp_redesignS} is faster than that under state feedback and noise-assisted feedback, which is consistent with Theorem \ref{thm:exponentially_stable_csfimp_redesignS}.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.48\textwidth,angle=0]{compare_linear_all.eps}
+	\caption{Exponential stabilization of $\rho_{e}$ under different feedback controls. The blue, green and pink curves represent the mean value of 30 sample trajectories under the combined feedback with the redesign state space division, state feedback and noise-assisted feedback, respectively, while the red curve is the exponential reference with exponent 0.0625.}
+	\label{figur:Compare}
+\end{figure}
+
+{\color{red}{
+\begin{rmk}
+	It should be noted that the time of the experimental results in this subsection are from 0 a.u. to 100 a.u., while the time in subsections \ref{subsec:cfm} and \ref{subsec:sfm} are from 0 a.u. to 20 a.u. In subsections \ref{subsec:cfm} and \ref{subsec:sfm}, we use the improved state feedback \eqref{eq:sf_u1_imp} and \eqref{eq:ssf_u_imp}, respectively, which can only exponentially stabilize quantum spin-$\frac{1}{2}$ systems in the state subspace $\mathcal{D}_\lambda$ as shown in Theorem \ref{thm:exponentially_stable_csfimp} and Theorem \ref{thm:exponentially_stable_ssf_imp}. Considering that $\rho_g\notin\mathcal{D}_\lambda$, we select the state $\frac{1}{2}\left[\begin{array}{cc}
+				1 & 1 \\
+				1 & 1
+			\end{array}\right]$ as the initial state $\rho_0$. In this subsection, we use the combined feedback (28), which can  exponentially stabilize quantum spin-$\frac{1}{2}$ systems in the entire state space $\mathcal{S}$ as shown in Theorem \ref{thm:exponentially_stable_f1} and Theorem \ref{thm:exponentially_stable_csfimp_redesignS}, so the initial state $\rho_0$ can be selected as $\rho_g$. Moreover, we let $\omega_{eg}=0.5$ and $0$ in this subsection and subsections \ref{subsec:cfm}, \ref{subsec:sfm}, respectively. Thus, the time difference in subsections \ref{subsec:cfm}, \ref{subsec:sfm} and this subsection is caused by the setting difference of $\omega_{eg}$ and $\rho_0$.
+\end{rmk}
+}}
+
+\section{Conclusions}\label{Sec:Conclusions}
+We {\color{red}{improved}} the state feedback strategies proposed in \cite{LAMC2018} and \cite{WSJZJ2021b} to exponentially stabilize eigenstates for quantum spin-$\frac{1}{2}$ systems with faster state convergence in this paper, respectively. The exponential convergence and superiority of the improved state feedback {\color{red}{were}} proved in theory and verified in numerical simulations. Moreover, we {\color{red}{presented}} the way of achieving global exponential stabilization of {\color{red}{quantum spin-$\frac{1}{2}$ systems}} under {\color{red}{the}} improved state feedback with the help of noise-assisted feedback and the way of designing state space division.
+{\color{red}{The all state feedback of exponentially stabilizing eigenstates were also compared and the comparison results were given.}} 
+The further works can be considered as follows: (1) The further improvement of the existing state feedback strategies, including the optimization of control parameters and the fusion of different state feedback strategies \cite{WSJZJ2021c}; (2) Robustness analysis of the state feedback strategies proposed in this paper when the physical parameters or the initial state are uncertain, as the works in \cite{LAMOn2020a,LAMOn2020b,EOC2021a,EOC2021b}; (3) Extension of the controlled quantum systems, e.g., considering the global exponential stabilization of $N$-level stochastic quantum systems \cite{LAMJ2019,LDPYJ2019} or multi-qubit stochastic quantum systems \cite{LKCJ2017,LAMC2019,KLLSCJ2021,LDKPYJ2021,LAMJ2021}; {\color{red}{(4) Design of quantum state observer and quantum state estimation algorithms for the practical application in the state-based controllers, as the works in \cite{NJ06,BKGLJ2017,YFTJ2019,ZCLJ2021}.}}
+
+\section*{Acknowledgment} % Place acknowledgements
+The authors wish to thank the anonymous reviewers for their helpful comments, which led to a great strengthening of this paper. Besides, the authors also wish to thank Ms. Fangling Wang for her help with the language polish.
+
+\begin{appendices}
+\numberwithin{equation}{section}
+\section{Calculations of $\mathcal{A}V_{\mathrm{nf}}\left(\rho_{t}\right)$}\label{Sec:Appendix}
+According to \eqref{eq:model_focus_2}, we have
+\begin{equation}\label{eq:dtr}
+	\begin{aligned}
+		d \operatorname{tr}\left(\rho_t \rho_f\right)=&\frac{\omega_{eg}}{2}\operatorname{tr}\left(-{{i}}\left[\sigma_z, \rho_{t}\right]\rho_{f}\right)dt
+		+\frac{M}{4}\operatorname{tr}\left(\left(\sigma_z \rho_t \sigma_z-\rho_t\right)\rho_{f}\right) dt-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t\\
+		&+\frac{g^{2}\left(\rho_t\right)}{4}\operatorname{tr}\left(\left(\sigma_y \rho_t \sigma_y-\rho_t\right) \rho_{f}\right)d t
+		+\frac{\sqrt{\eta M}}{2} \operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right) d W_t
+	\end{aligned}
+\end{equation}
+Due to $\operatorname{tr}\left(AB\right)=\operatorname{tr}\left(BA\right)$ and $\operatorname{tr}\left(\left[A, B\right]C\right)=\operatorname{tr}\left(A\left[B, C\right]\right)$ for the matrices $A$, $B$, and $C$, it is easy to obtain that
+\begin{equation}\label{eq:assApp_1}
+	\operatorname{tr}\left(\left[\sigma_z, \rho_{t}\right]\rho_{f}\right)=\operatorname{tr}\left(\rho_{f}\left[\sigma_z, \rho_{t}\right]\right)=\operatorname{tr}\left(\left[\rho_{f},\sigma_z\right]\rho_{t}\right)=0
+\end{equation}
+Consider that $\sigma_z\rho_{f}=\rho_{f}\sigma_z=\rho_f$, $\sigma_y\rho_{f}\sigma_y=\rho_{e}$ and place \eqref{eq:assApp_1} into \eqref{eq:dtr}, we have
+\begin{equation}\label{eq:dtr_1}
+	\begin{aligned}
+		d\operatorname{tr}\left(\rho_t \rho_f\right)
+		=&\frac{M}{4}\operatorname{tr}\left(\sigma_z \rho_t \sigma_z\rho_f-\rho_t\rho_f\right) d t-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t
+		+\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\sigma_y \rho_t \sigma_y\rho_f-\rho_t\rho_{f}\right)d t\\
+		&+\frac{\sqrt{\eta M}}{2} \operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right) d W_t\\
+		=&\frac{M}{4}\operatorname{tr}\left(\sigma_z \rho_t\rho_f-\rho_t\rho_f\right) d t-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t
+		+\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\sigma_y\rho_f\sigma_y \rho_t-\rho_t\rho_{f}\right)d t\\
+		&+\frac{\sqrt{\eta M}}{2} \operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right) d W_t\\
+		=&\frac{M}{4}\operatorname{tr}\left(\rho_f\sigma_z \rho_t-\rho_t\rho_f\right) d t-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t+\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\rho_e\rho_t-\rho_t\rho_{f}\right)d t\\
+		&+\frac{\sqrt{\eta M}}{2} \operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right) d W_t\\
+		=&\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\rho_e\rho_t-\rho_t\rho_{f}\right)d t+\frac{\sqrt{\eta M}}{2} \operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right) d W_t
+		-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t
+	\end{aligned}
+\end{equation}
+On the other hand, 
+\begin{equation}\label{eq:assApp_2}
+	\begin{aligned}
+		\operatorname{tr}\left(\left(\sigma_z \rho_t+\rho_t \sigma_z-2 \operatorname{tr}\left(\rho_t \sigma_z\right) \rho_t\right)\rho_{f}\right)
+		&=\operatorname{tr}\left(\rho_f\sigma_z \rho_t+\rho_t \sigma_z\rho_f\right)-2 \operatorname{tr}\left(\rho_t \sigma_z\right)\operatorname{tr}\left( \rho_t\rho_f\right)\\
+		&=2\operatorname{tr}\left(\rho_t\rho_f\right)-2 \operatorname{tr}\left(\rho_t \sigma_z\right)\operatorname{tr}\left( \rho_t\rho_f\right)\\
+		&=2\left(1-\operatorname{tr}\left(\rho_t \sigma_z\right)\right)\operatorname{tr}\left(\rho_t\rho_f\right)
+	\end{aligned}
+\end{equation}
+from which \eqref{eq:dtr_1} becomes
+\begin{equation}\label{eq:dtr_2}
+	\begin{aligned}
+		d\operatorname{tr}\left(\rho_t \rho_f\right)
+		=&\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\rho_e\rho_t-\rho_t\rho_{f}\right)d t-\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right) d B_t
+		+\sqrt{\eta M}\left(1-\operatorname{tr}\left(\rho_t \sigma_z\right)\right)\operatorname{tr}\left(\rho_t\rho_f\right)d W_t\\
+		=&\Gamma\left(\rho_t\right) dt+\Upsilon\left(\rho_t\right)dB_{t}+\Pi\left(\rho_t\right) dW_t
+	\end{aligned}
+\end{equation}
+where, $\Gamma\left(\rho_t\right)=\frac{g^2\left(\rho_t\right)}{4}\operatorname{tr}\left(\rho_e\rho_t-\rho_t\rho_{f}\right)$, $\Upsilon\left(\rho_t\right)=\frac{g\left(\rho_t\right)}{2}\operatorname{tr}\left({{i}}\left[\sigma_y, \rho_t\right]\rho_{f}\right)$ and $\Pi\left(\rho_t\right)=\sqrt{\eta M}\left(1-\operatorname{tr}\left(\rho_t \sigma_z\right)\right)\operatorname{tr}\left(\rho_t\rho_f\right)$. 
+
+Due to $dtdt=dtdB_t=dtdW_t=dB_tdW_t=0$ and $dB_tdB_t=dW_tdW_t=dt$, it can be obtained from \eqref{eq:dtr_2} that
+\begin{equation}\label{eq:dtr2}
+	\left(d \operatorname{tr}\left(\rho_t \rho_f\right)\right)^2=\left(\Upsilon^2\left(\rho_t\right)+\Pi^2\left(\rho_t\right)\right)dt
+\end{equation} 
+According to {\color{red}{It\^{o}}}'s Lemma \cite{OB2003}, we have
+\begin{equation}\label{eq:dV}
+	\begin{aligned}
+		dV\left(\rho_{t}\right)=-\frac{1}{2}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{1}{2}}d\operatorname{tr}\left(\rho_{t}\rho_{f}\right)
+		-\frac{1}{8}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{3}{2}}\left(d\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^2
+	\end{aligned}
+\end{equation}
+Place \eqref{eq:dtr_2} and \eqref{eq:dtr2} into \eqref{eq:dV}, \eqref{eq:dV} can be written as
+\begin{equation}\label{eq:dV_1}
+	\begin{aligned}
+		dV\left(\rho_{t}\right)
+		=&-\frac{1}{2}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{1}{2}}\left(\Gamma\left(\rho_t\right)dt+\Upsilon\left(\rho_t\right) dB_t+\Pi\left(\rho_t\right)dW_{t}\right)
+		-\frac{1}{8}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{3}{2}}\left(\Upsilon^2\left(\rho_t\right)+\Pi^2\left(\rho_t\right)\right)dt
+	\end{aligned}
+\end{equation}
+which leads to
+\begin{equation}\label{eq:LV_cf_ass}
+	\begin{aligned}
+		\mathcal{A}V_{nf}\left(\rho_{t}\right)
+		=&-\frac{1}{2}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{1}{2}}\Gamma\left(\rho_t\right)
+		-\frac{1}{8}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{3}{2}}\left(\Upsilon^2\left(\rho_t\right)+\Pi^2\left(\rho_t\right)\right)\\
+		=&-\frac{1}{2}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{1}{2}}\frac{g^{2}\left(\rho_t\right)}{4}\operatorname{tr}\left(\rho_e\rho_{t}-\rho_{t}\rho_{f}\right)\\
+		&-\frac{1}{8}\left(1-\operatorname{tr}\left(\rho_{t}\rho_{f}\right)\right)^{-\frac{3}{2}}\left(\eta M\left(1-\operatorname{tr}\left(\rho_{t}\sigma_{z}\right)\right)^2\operatorname{tr}^2\left(\rho_{t}\rho_{f}\right)+\frac{g^{2}\left(\rho_t\right)}{4}\operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)\right)\\
+		=&-\frac{g^{2}(\rho_{t})\operatorname{tr}\left(\rho_{e}\rho_{t}-\rho_t \rho_{f}\right)}{8\sqrt{1-\operatorname{tr}\left(\rho_t \rho_{f}\right)}}-\frac{\eta M (1-\operatorname{tr}(\rho_{t}\sigma_z))^{2}\operatorname{tr}^{2}\left(\rho_t \rho_{f}\right)}{8\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}-\frac{g^{2}\left(\rho_t\right)\operatorname{tr}^2\left(i\left[\sigma_y, \rho_t\right]\rho_{f}\right)}{32\left(1-\operatorname{tr}\left(\rho_t \rho_{f}\right)\right)^{\frac{3}{2}}}
+	\end{aligned}
+\end{equation}
+\end{appendices}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{Ref}
+\end{document}
