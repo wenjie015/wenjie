@@ -66,10 +66,10 @@ publications:
        # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
        # conference: "Journal of The Franklin Institute, under review, 2021"
         
-     - title: Exponential Stabilization of Spin-1/2 Systems Based on Switching State Feedback
-       link:  
-       authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng
-       conference: "Romanian Journal of Physics, provisionally accepted, 2022 (SCI, IF=1.888)"
+      - title: Exponential Stabilization of Spin-1/2 Systems Based on Switching State Feedback
+        link:  
+        authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng
+        conference: "Romanian Journal of Physics, provisionally accepted, 2022 (SCI, IF=1.888)"
         
       - title: Feedback Exponential Stabilization of Stochastic Quantum Systems Based on State Space Division
         link: https://doi.org/10.1016/j.rinp.2022.105525
