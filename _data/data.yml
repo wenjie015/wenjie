@@ -67,9 +67,9 @@ publications:
        # conference: "Journal of The Franklin Institute, under review, 2021"
         
       - title: Exponential Stabilization of Spin-1/2 Systems Based on Switching State Feedback
-        link:  
+        link:  https://rjp.nipne.ro/accpaps/8BE28E1334257B2E628AEF50AC6BFC2596015E66.pdf
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng
-        conference: "Romanian Journal of Physics, provisionally accepted, 2022 (SCI, IF=1.888)"
+        conference: "Romanian Journal of Physics, accepted, Online, 2022 (SCI, IF=1.888)"
         
       - title: Feedback Exponential Stabilization of Stochastic Quantum Systems Based on State Space Division
         link: https://doi.org/10.1016/j.rinp.2022.105525
