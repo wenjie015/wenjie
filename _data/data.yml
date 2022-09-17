@@ -136,10 +136,15 @@ publications:
         authors: Shuang Cong*, Jie Wen and Xubo Zou
         conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103 (SCI, IF=1.363)"
         
-      - title: Remaining Useful Life Prediction of Lithium-ion Batteries based on the Discharge Voltage
+      - title: Levitation Control of Maglev Systems Based on Cascade Control
         link: 
+        authors: Jie Wen*, Jikuo Wu, Yukai Tian
+        conference: "2022 China Automation Congress (CAC 2022), Xiamen, 2022: 11.25-11.27 (EI)"
+        
+      - title: Remaining Useful Life Prediction of Lithium-ion Batteries based on the Discharge Voltage
+        link: https://doi.org/10.1109/CAC53003.2021.9727840
         authors: Yanru Yang, Jie Wen*, Yuanhao Shi, Jianfang Jia, Mengwei Li and Jianchao Zeng
-        conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24. (EI)"
+        conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24 (EI)"
         
       - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
         link: https://doi.org/10.23919/ChiCC.2018.8484204
