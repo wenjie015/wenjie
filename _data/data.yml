@@ -60,6 +60,11 @@ publications:
        # link: 
        # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
        # conference: "SIAM Journal on Control and Optimization, under review, 2021"
+       
+      - title: State of Health Prediction of Lithium-Ion Batteries Based on CNN-BiLSTM-AM
+        link: 
+        authors: Yukai TIian, Jie Wen*, Yanru Yang, Yuanhao Shi and Jianchao Zeng*
+        conference: "Batteries, accepted, 2022 (SCI, IF=5.938)"
             
       - title: Global Exponential Stabilization of Quantum Spin-1/2 Systems via Improved Feedback Control
         link: https://doi.org/10.1016/j.jfranklin.2022.08.009
