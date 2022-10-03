@@ -62,7 +62,7 @@ publications:
        # conference: "SIAM Journal on Control and Optimization, under review, 2021"
        
       - title: State-of-Health Prediction of Lithium-Ion Batteries Based on CNN-BiLSTM-AM
-        link: https://doi.org/ 10.3390/batteries8100155
+        link: https://doi.org/10.3390/batteries8100155
         authors: Yukai TIian, Jie Wen*, Yanru Yang, Yuanhao Shi and Jianchao Zeng*
         conference: "Batteries, 2022, 8(10): 155 (SCI, IF=5.938)"
             
