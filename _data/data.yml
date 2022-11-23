@@ -61,6 +61,11 @@ publications:
        # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
        # conference: "SIAM Journal on Control and Optimization, under review, 2021"
        
+      - title: Levitation Control of Maglev Systems Based on Cascade Control
+        link: 
+        authors: Jie Wen*, Jikuo Wu, Yukai Tian
+        conference: "2022 China Automation Congress (CAC 2022), Xiamen, 2022: 11.25-11.27 (EI)" 
+       
       - title: State-of-Health Prediction of Lithium-Ion Batteries Based on CNN-BiLSTM-AM
         link: https://doi.org/10.3390/batteries8100155
         authors: Yukai Tian, Jie Wen*, Yanru Yang, Yuanhao Shi and Jianchao Zeng
@@ -85,6 +90,11 @@ publications:
         link: https://doi.org/10.1016/j.rinp.2021.104862
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
         conference: "Results in Physics, 2021, 30: 104862 (SCI, IF=4.565)"
+        
+      - title: Remaining Useful Life Prediction of Lithium-ion Batteries based on the Discharge Voltage
+        link: https://doi.org/10.1109/CAC53003.2021.9727840
+        authors: Yanru Yang, Jie Wen*, Yuanhao Shi, Jianfang Jia, Mengwei Li and Jianchao Zeng
+        conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24 (EI)"
         
       - title: Optimal Soot Blowing and Repair Plan for Boiler Based on HJB Equation
         link: https://doi.org/10.1080/02331934.2021.1954922
@@ -121,6 +131,21 @@ publications:
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
         conference: "Journal of The Franklin Institute, 2018, 355(5): 2562-2582 (SCI, IF=4.246)"
 
+      - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
+        link: https://doi.org/10.23919/ChiCC.2018.8484204
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
+        conference: "The 37th Chinese Control Conference (CCC 2018), Wuhan, 2018: 7.25-8.27 (EI)"
+
+      - title: Global Stabilization of Mixed-states for Stochastic Quantum Systems via Switching Control
+        link: https://doi.org/10.1016/j.ifacol.2017.08.2001
+        authors: Shuang Cong*, Jie Wen, Fangfang Meng and  Kezhi Li
+        conference: "The 20th World Congress of the International Federation of Automatic Control (IFAC World Congress 2017), Toulouse, 2017: 7.09-7.14 (EI)"
+      
+      - title: Stabilizing a Rotary Inverted Pendulum Based on Lyapunov Stability Theorem
+        link: https://doi.org/10.1109/CCDC.2017.7978173
+        authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
+        conference: "The 29th Chinese Control and Decision Conference (CCDC 2017), Chongqing, 2017: 5.28-5.30 (EI)"
+
       - title: Stabilizing a Rotary Inverted Pendulum Based on Logarithmic Lyapunov Function
         link: https://doi.org/10.1155/2017/4091302
         authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
@@ -136,40 +161,15 @@ publications:
         authors: Jie Wen, Shuang Cong*
         conference: "Open Systems & Information Dynamics, 2016, 23(01): 1650005 (SCI, IF=0.571)"
 
-      - title: Comparison of Time Optimal Control for Two Level Quantum Systems
-        link: https://doi.org/10.1109/JSEE.2014.00011
-        authors: Shuang Cong*, Jie Wen and Xubo Zou
-        conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103 (SCI, IF=1.363)"
-        
-      - title: Levitation Control of Maglev Systems Based on Cascade Control
-        link: 
-        authors: Jie Wen*, Jikuo Wu, Yukai Tian
-        conference: "2022 China Automation Congress (CAC 2022), Xiamen, 2022: 11.25-11.27 (EI)"
-        
-      - title: Remaining Useful Life Prediction of Lithium-ion Batteries based on the Discharge Voltage
-        link: https://doi.org/10.1109/CAC53003.2021.9727840
-        authors: Yanru Yang, Jie Wen*, Yuanhao Shi, Jianfang Jia, Mengwei Li and Jianchao Zeng
-        conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24 (EI)"
-        
-      - title: Optimal Soot Blowing Strategies in Boiler Systems with Variable Steam Flow
-        link: https://doi.org/10.23919/ChiCC.2018.8484204
-        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng
-        conference: "The 37th Chinese Control Conference (CCC 2018), Wuhan, 2018: 7.25-8.27 (EI)"
-
-      - title: Global Stabilization of Mixed-states for Stochastic Quantum Systems via Switching Control
-        link: https://doi.org/10.1016/j.ifacol.2017.08.2001
-        authors: Shuang Cong*, Jie Wen, Fangfang Meng and  Kezhi Li
-        conference: "The 20th World Congress of the International Federation of Automatic Control (IFAC World Congress 2017), Toulouse, 2017: 7.09-7.14 (EI)"
-
-      - title: Stabilizing a Rotary Inverted Pendulum Based on Lyapunov Stability Theorem
-        link: https://doi.org/10.1109/CCDC.2017.7978173
-        authors: Jie Wen*, Yuanhao Shi and Xiaonong Lu
-        conference: "The 29th Chinese Control and Decision Conference (CCDC 2017), Chongqing, 2017: 5.28-5.30 (EI)"
-
       - title: Global Stabilization of an Eigenstate for Stochastic Quantum Systems
         link: https://doi.org/10.1109/ICCA.2016.7505405
         authors: Shuang Cong*, Jie Wen, Sen Kuang and Fangfang Meng
         conference: "IEEE International Conference on Control & Automation (ICCA 2016), Kathmandu, 2016: 6.01-6.03 (EI)"
+        
+      - title: Comparison of Time Optimal Control for Two Level Quantum Systems
+        link: https://doi.org/10.1109/JSEE.2014.00011
+        authors: Shuang Cong*, Jie Wen and Xubo Zou
+        conference: "Journal of Systems Engineering and Electronics, 2014, 25(1): 95-103 (SCI, IF=1.363)"
 
       - title: Lyapunov-based Control for the Operator Preparation in Markovian Open Quantum Systems
         link: https://doi.org/10.1109/ICInfA.2014.6932658
