@@ -86,6 +86,11 @@ publications:
         authors: Jie Wen*, Fangmin Wang, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
         conference: "Results in Physics, 2022, 37: 105525 (SCI, IF=4.565)"
         
+      - title: Optimal Soot Blowing and Repair Plan for Boiler Based on HJB Equation
+        link: https://doi.org/10.1080/02331934.2021.1954922
+        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang and Jianfang Jia
+        conference: "Optimization, 2022, 71(16): 4603-4622. (SCI, IF=2.456)"   
+        
       - title: Exponential Stabilization of Stochastic Quantum Systems via Combined Feedback
         link: https://doi.org/10.1016/j.rinp.2021.104862
         authors: Jie Wen*, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
@@ -95,11 +100,6 @@ publications:
         link: https://doi.org/10.1109/CAC53003.2021.9727840
         authors: Yanru Yang, Jie Wen*, Yuanhao Shi, Jianfang Jia, Mengwei Li and Jianchao Zeng
         conference: "2021 China Automation Congress (CAC 2021), Beijing, 2021: 10.22-10.24 (EI)"
-        
-      - title: Optimal Soot Blowing and Repair Plan for Boiler Based on HJB Equation
-        link: https://doi.org/10.1080/02331934.2021.1954922
-        authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang and Jianfang Jia
-        conference: "Optimization, online, 2021, DOI: 10.1080/02331934.2021.1954922 (SCI, IF=2.456)"   
         
       - title: State of Health Prediction of Lithium-ion Batteries Based on the Discharge Voltage and Temperature
         link: https://doi.org/10.3390/electronics10121497
