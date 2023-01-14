@@ -56,10 +56,10 @@ projects:
 publications:
     title: Publications
     papers:
-     # - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems based on Continuous Measurement Feedback
-       # link: 
-       # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-       # conference: "SIAM Journal on Control and Optimization, under review, 2021"
+      - title: Remaining Useful Life Prediction for Lithium-Ion Batteries Based on the Partial Voltage and Temperature
+        link: https://doi.org/10.3390/su15021602
+        authors: Yanru Yang, Jie Wen*, Jianyu Liang, Yuanhao Shi, Yukai Tian and Jiang Wang
+        conference: "Sustainability, 2023, 15(2): 1602 (SSCI, SCI, IF=3.889)"
        
       - title: Levitation Control of Maglev Systems Based on Cascade Control
         link: 
