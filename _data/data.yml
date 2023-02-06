@@ -52,14 +52,14 @@ projects:
 
       - title: North University of China, Start-up Grant
         tagline: "Project 20150057, Principal investigator, 2015.09-2018.06, Amount granted CNY 200,000."
-preprints:
-    title: Preprint
-    assignments:
-      - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
-        tagline: "Jie Wen*, Fangmin Wang#, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*, Chinese Physics B, under review (Round 2), Feb 6, 2023."
 publications:
     title: Publications
     papers:
+      - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
+        link: 
+        authors: Jie Wen*, Fangmin Wang#, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+        conference: "Chinese Physics B, under review (Round 2), Feb 6, 2023."
+        
       - title: Remaining Useful Life Prediction for Lithium-Ion Batteries Based on the Partial Voltage and Temperature
         link: https://doi.org/10.3390/su15021602
         authors: Yanru Yang, Jie Wen*, Jianyu Liang, Yuanhao Shi, Yukai Tian and Jiang Wang
