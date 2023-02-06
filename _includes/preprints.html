@@ -1,0 +1,38 @@
+{% assign preprints = site.data.data.preprints %}
+{% if preprints %}
+<section class="section preprints-section">
+
+  <h2 class="section-title">
+    <span class="fa-stack fa-xs">
+      <i class="fas fa-circle fa-stack-2x"></i>
+      <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
+    </span>
+    {{ preprints.title }}
+  </h2>
+
+  {% if preprints.intro %}
+  <div class="intro">
+      <p>{{ preprints.intro }}</p>
+  </div><!--//intro-->
+  {% endif %}
+
+  {% for preprint in preprints.assignments %}
+    <div class="item">
+
+      <span class="preprint-title">
+        {% if preprint.link %}
+        <a href="{{ preprint.link }}" target="_blank">{{ preprint.title }}</a>
+        {% else %}
+        {{ preprint.title }}
+        {% endif %}
+      </span>
+
+      {% if preprint.tagline %}
+      - <span class="preprint-tagline">{{ preprint.tagline }}</span>
+      {% endif %}
+
+    </div><!--//item-->
+  {% endfor %}
+
+</section><!--//section-->
+{% endif %}
