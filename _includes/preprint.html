@@ -5,27 +5,33 @@
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
       <i class="fas fa-circle fa-stack-2x"></i>
-      <i class="fas fa-file-alt fa-stack-1x fa-inverse"></i>
+      <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
     </span>
     {{ preprints.title }}
   </h2>
 
   {% if preprints.intro %}
   <div class="intro">
-    {{ preprints.intro | markdownify }}
+      <p>{{ preprints.intro }}</p>
   </div><!--//intro-->
   {% endif %}
 
-  {% for preprint in preprints.papers %}
-  <div class="item">
-    {% if preprint.link %}
-      <li><a href="{{ preprint.link }}">{{ preprint.title }}</a></li>
-    {% else %}
-      <li>{{ preprint.title }}</li>
-    {% endif %}
-    <div class="preprint-authors">{{ preprint.authors }}</div>
-    <div class="preprint-conference">{{ preprint.conference }}</div>
-  </div><!--//item-->
+  {% for preprint in preprints.assignments %}
+    <div class="item">
+
+      <span class="preprint-title">
+        {% if preprint.link %}
+        <a href="{{ preprint.link }}" target="_blank">{{ preprint.title }}</a>
+        {% else %}
+        {{ preprint.title }}
+        {% endif %}
+      </span>
+
+      {% if preprint.tagline %}
+      - <span class="preprint-tagline">{{ preprint.tagline }}</span>
+      {% endif %}
+
+    </div><!--//item-->
   {% endfor %}
 
 </section><!--//section-->
