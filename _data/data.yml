@@ -55,10 +55,10 @@ projects:
 publications:
     title: Publications
     papers:
-      # - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
-        # link: 
-        # authors: Jie Wen*, Fangmin Wang, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        # conference: "Chinese Physics B, under review (Round 2), Feb 6, 2023."
+      - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
+        link: 
+        authors: Jie Wen*, Fangmin Wang, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
+        conference: "Chinese Physics B, accepted, Feb 7 2023."
       
       # - title: Stable Levitation of Single-point Levitation Systems for Maglev Trains Based on Cascade Control
         # link: 
