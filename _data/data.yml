@@ -55,7 +55,7 @@ projects:
 publications:
     title: Publications
     papers:
-     - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
+     - title: State of Health Prediction of Lithium-ion Batteries Based on Bidirectional Gated Recurrent Unit and Transformer
         link: https://doi.org/10.1016/j.energy.2023.129401
         authors: Chenyu Jia, Yukai Tian, Yuanhao Shi, Jianfang Jia, Jie Wen*, and Jianchao Zeng
         conference: "Energy, 2023, 285: 129401 (SCI, IF=9.0)"
