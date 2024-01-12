@@ -55,20 +55,15 @@ projects:
 publications:
     title: Publications
     papers:
+     - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
+        link: https://doi.org/10.1016/j.energy.2023.129401
+        authors: Chenyu Jia, Yukai Tian, Yuanhao Shi, Jianfang Jia, Jie Wen*, and Jianchao Zeng
+        conference: "Energy, 2023, 285: 129401 (SCI, IF=9.0)"
+        
       - title: Rapid Stabilization of Stochastic Quantum Systems in A Unified Framework
         link: https://doi.org/10.1088/1674-1056/acb9f3
         authors: Jie Wen*, Fangmin Wang, Yuanhao Shi, Jianfang Jia and Jianchao Zeng*
-        conference: "Chinese Physics B, online, Chinese Physics B, 2023, 32: 070203. (SCI, IF=1.7)"
-      
-      # - title: Stable Levitation of Single-point Levitation Systems for Maglev Trains Based on Cascade Control
-        # link: 
-        # authors: Jie Wen*, Fangling Wang
-        # conference: "Transactions of the Institute of Measurement and Control, under review, Jan 7, 2023."
-        
-      # - title: Exponential Stabilization of Stochastic Time-delay Quantum Systems Based on Continuous Measurement Feedback
-        # link: 
-        # authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        # conference: "Journal of The Franklin Institute, under review, Nov 2, 2022." 
+        conference: "Chinese Physics B, 2023, 32: 070203 (SCI, IF=1.7)"
         
       - title: Remaining Useful Life Prediction for Lithium-Ion Batteries Based on the Partial Voltage and Temperature
         link: https://doi.org/10.3390/su15021602
@@ -88,7 +83,7 @@ publications:
       - title: Global Exponential Stabilization of Quantum Spin-1/2 Systems via Improved Feedback Control
         link: https://doi.org/10.1016/j.jfranklin.2022.08.009
         authors: Jie Wen*, Yuanhao Shi, Xiaoqiong Pang, Jianfang Jia and Jianchao Zeng*
-        conference: "Journal of The Franklin Institute, online, 2022, DOI: 10.1016/j.jfranklin.2022.08.009 (SCI, IF=4.1)"
+        conference: "Journal of The Franklin Institute, 2023, 360(17): 13798-13821 (SCI, IF=4.1)"
         
       - title: Exponential Stabilization of Spin-1/2 Systems Based on Switching State Feedback
         link:  https://rjp.nipne.ro/2022_67_9-10/RomJPhys.67.119.pdf
